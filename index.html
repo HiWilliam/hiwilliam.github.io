@@ -106,6 +106,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Hiwilliam's Blog" type="application/atom+xml">
+
 
 
   
@@ -171,7 +173,13 @@
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
-
+    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+      </svg>
+    </a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
@@ -218,23 +226,6 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -480,150 +471,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/JQGrid 开启TreeGrid/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hiwilliam">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hiwilliam's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/17/web/JQGrid 开启TreeGrid/" class="post-title-link" itemprop="url">JQGrid 开启TreeGrid</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:34" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#table_list_2&quot;).jqGrid(&#123;</span><br><span class="line">            url:&quot;&#123;:url(&apos;Table/load_treeGrid&apos;)&#125;&quot;,//表格数据初步加载请求地址　tp5写法</span><br><span class="line">            datatype:&quot;json&quot;,//返回数据类型　必须写</span><br><span class="line">            height: &quot;100%&quot;,</span><br><span class="line">            width:&apos;100%&apos;,</span><br><span class="line">            autowidth: true,</span><br><span class="line">            shrinkToFit: true,//表格宽度自动充满</span><br><span class="line">            sortable:true,//开启可拖动功能</span><br><span class="line">            treeGrid:true,//开启treegrid功能</span><br><span class="line">            // multiSort: true,//组合查询功能</span><br><span class="line">            colNames:[&apos;部门代号&apos;,&apos;id&apos;,&apos;部门名称&apos;,&apos;部门类型&apos;,&apos;负责人&apos;,&apos;联系号码&apos;,&apos;录入日期&apos;,&apos;修改日期&apos;,&apos;状态&apos;],//自定义列明　　需要和下面colmodel一一对应</span><br><span class="line">            colModel:[</span><br><span class="line">                &#123;name:&apos;scost_no&apos;,index:&apos;scost_no&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;id&apos;,index:&apos;id&apos;,hidden:true,key:true&#125;,//开启treegrid功能情况下 id(类似字段)必须有　</span><br><span class="line">                &#123;name:&apos;dept_name&apos;,index:&apos;dept_name&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;dept_type&apos;,index:&apos;dept_type&apos;,sortable:false,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;leader&apos;,index:&apos;leader&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;tel&apos;,index:&apos;tel&apos; ,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_entry&apos;,index:&apos;date_entry&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_update&apos;,index:&apos;date_update&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;status&apos;,index:&apos;status&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">            ],</span><br><span class="line">            pager:true,//开启分页(treegrid　无需开启)</span><br><span class="line">            jsonReader:&#123;</span><br><span class="line">                root:&quot;data&quot;,</span><br><span class="line">                repeatitems: false  </span><br><span class="line">            &#125;,//关键配置　jqgrid 默认对返回json有特殊的要求，变态到名称也是固定的。所以需要特殊配置。自定义的话　repeatiteams:false</span><br><span class="line">            treeGridModel:&apos;adjacency&apos;,//treegrid　返回ｊｓｏｎ规定的字段类型  默认nested </span><br><span class="line">            ExpandCloumn:&apos;scost_no&apos;,//树形结构icons显示的字段　最好是colModel的第一个 </span><br><span class="line">            ExpandColClick:true,//允许点击行来收缩折叠</span><br><span class="line">      treeReader : &#123;  </span><br><span class="line">           level_field: &quot;level&quot;,  //等级　</span><br><span class="line">           parent_id_field: &quot;parent&quot;,  //父id</span><br><span class="line">           leaf_field: &quot;isLeaf&quot;,  //是否是子节点</span><br><span class="line">                 expanded_field: &quot;expanded&quot; //是否已展开</span><br><span class="line">              </span><br><span class="line">            &#125;,//类似jsonreader　可自定义treegrid返回数据中必要字段的属性名 这里是adjacency　对应treeGridModel　注:这里的字段是返回数据必须的</span><br><span class="line">            hidegrid: false</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>上面简要的给配置属性添加了备注，基本是常用的，基于自己的理解可能有些错误。<br>这里写一下我遇到的坑:我给设置了ExpandCloumn:”socst_no” 但是colModel的顺序为id,scost_no,…。改为scost_no,id就行了就是这么简单愣是浪费我半天时间。shit!　<br>其实这些东西都是我看了网上的博客后写的。但在上面的这个坑可没人提及。<br><em>本文用到的jqgrid是inspinia中的　jqgrid版本4.6.0</em></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/doc/Hexo脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -711,151 +558,6 @@
         
           
             <h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var spawn = require(&apos;child_process&apos;).exec;</span><br><span class="line"></span><br><span class="line">// Hexo 2.x 用户复制这段</span><br><span class="line">hexo.on(&apos;new&apos;, function(path)&#123;</span><br><span class="line">spawn(&apos;start  &quot;支持Markdonw语法的编辑器路径&quot; &apos; + path);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Hexo 3 用户复制这段</span><br><span class="line">hexo.on(&apos;new&apos;, function(data)&#123;</span><br><span class="line">spawn(&apos;start  &quot;支持Markdonw语法的编辑器路径&quot; &apos; + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/JQGrid 添加操作列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hiwilliam">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hiwilliam's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/17/web/JQGrid 添加操作列/" class="post-title-link" itemprop="url">JQGrid 添加操作列</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:48" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在jqGrid生成的表格最后一列追加操作列：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:btn_del&#125;</span><br><span class="line">function btn_del(cellValue,options,rowData)&#123;</span><br><span class="line">           console.log(cellValue,options,rowData);</span><br><span class="line">           btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">           return btnstr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br>  　cellValue输出的是单元格值(例子中为id的值)<br>  　options输出的是表格配置相关的json对象<br>  　rowObject输出的是当前行的数据json对象<br>  　那么就通过rowObject就可得到当前行数据的id(不是序列号),从而实现操作<br>注意事项：<br>   name属性最好选择当前行数据的id<br>  除了cellValue,option,rowData还有第四个参数输出为”add”(暂不知什么作用，吊大的请回复，学学习)<br>具体api请看官方文档<a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter" target="_blank" rel="noopener">http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter</a><br><em>本文中用是jqGrid 4.6.0 新手学习,有错请回复指出，不甚言谢</em></p>
 
           
         
@@ -1001,151 +703,6 @@
             <p>在我上一篇文章中，写了关于jqGrid追加操作列的方法，今天在项目中发现了一个问题：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>　　以上述代码为例，我的实际项目中，我的表格还有双击行弹窗编辑，故我需要传递id值到弹窗层，且要显示双击行的数据，因为我用了layer，所有数据都传过去有点麻烦(我的水平有限)，所以选择传id，通过id来查询相关数据。<br>　　但是我在进行上面操作时发现，我传过去的id值有问题，后来console才知道，id已经变了。我想应该是这里操作列配置有问题。因为这里用了name:’id’,导致return回的值覆盖了原本行数据中id值。<br>console输出：<br>　　id: “<button class="btn btn-danger" onclick="delRow(3)">删除</button>“<br>故只需将name:’id’，改为不存在的字段即可,改动如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;option&apos;,index:&apos;option&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>console输出：<br>　　id依旧存在且不变<br>　　新增option: “<button class="btn btn-danger" onclick="delRow(3)">删除</button>“<br><em>如有错误不足之处，请多回复指正，不甚言谢</em></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/iCheck选中事件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hiwilliam">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hiwilliam's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/17/web/iCheck选中事件/" class="post-title-link" itemprop="url">iCheck选中事件</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:25:00" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：<br>选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifChecked,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>取消选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifUnchecked&quot;,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><em>上述id注意换成实际id或者其他筛选器。</em></p>
 
           
         
@@ -1351,6 +908,440 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/iCheck选中事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hiwilliam">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hiwilliam's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/17/web/iCheck选中事件/" class="post-title-link" itemprop="url">iCheck选中事件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:25:00" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：<br>选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifChecked,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>取消选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifUnchecked&quot;,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><em>上述id注意换成实际id或者其他筛选器。</em></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/JQGrid 添加操作列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hiwilliam">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hiwilliam's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/17/web/JQGrid 添加操作列/" class="post-title-link" itemprop="url">JQGrid 添加操作列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:48" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在jqGrid生成的表格最后一列追加操作列：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:btn_del&#125;</span><br><span class="line">function btn_del(cellValue,options,rowData)&#123;</span><br><span class="line">           console.log(cellValue,options,rowData);</span><br><span class="line">           btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">           return btnstr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br>  　cellValue输出的是单元格值(例子中为id的值)<br>  　options输出的是表格配置相关的json对象<br>  　rowObject输出的是当前行的数据json对象<br>  　那么就通过rowObject就可得到当前行数据的id(不是序列号),从而实现操作<br>注意事项：<br>   name属性最好选择当前行数据的id<br>  除了cellValue,option,rowData还有第四个参数输出为”add”(暂不知什么作用，吊大的请回复，学学习)<br>具体api请看官方文档<a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter" target="_blank" rel="noopener">http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter</a><br><em>本文中用是jqGrid 4.6.0 新手学习,有错请回复指出，不甚言谢</em></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/JQGrid 开启TreeGrid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hiwilliam">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hiwilliam's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/17/web/JQGrid 开启TreeGrid/" class="post-title-link" itemprop="url">JQGrid 开启TreeGrid</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:34" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#table_list_2&quot;).jqGrid(&#123;</span><br><span class="line">            url:&quot;&#123;:url(&apos;Table/load_treeGrid&apos;)&#125;&quot;,//表格数据初步加载请求地址　tp5写法</span><br><span class="line">            datatype:&quot;json&quot;,//返回数据类型　必须写</span><br><span class="line">            height: &quot;100%&quot;,</span><br><span class="line">            width:&apos;100%&apos;,</span><br><span class="line">            autowidth: true,</span><br><span class="line">            shrinkToFit: true,//表格宽度自动充满</span><br><span class="line">            sortable:true,//开启可拖动功能</span><br><span class="line">            treeGrid:true,//开启treegrid功能</span><br><span class="line">            // multiSort: true,//组合查询功能</span><br><span class="line">            colNames:[&apos;部门代号&apos;,&apos;id&apos;,&apos;部门名称&apos;,&apos;部门类型&apos;,&apos;负责人&apos;,&apos;联系号码&apos;,&apos;录入日期&apos;,&apos;修改日期&apos;,&apos;状态&apos;],//自定义列明　　需要和下面colmodel一一对应</span><br><span class="line">            colModel:[</span><br><span class="line">                &#123;name:&apos;scost_no&apos;,index:&apos;scost_no&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;id&apos;,index:&apos;id&apos;,hidden:true,key:true&#125;,//开启treegrid功能情况下 id(类似字段)必须有　</span><br><span class="line">                &#123;name:&apos;dept_name&apos;,index:&apos;dept_name&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;dept_type&apos;,index:&apos;dept_type&apos;,sortable:false,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;leader&apos;,index:&apos;leader&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;tel&apos;,index:&apos;tel&apos; ,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_entry&apos;,index:&apos;date_entry&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_update&apos;,index:&apos;date_update&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;status&apos;,index:&apos;status&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">            ],</span><br><span class="line">            pager:true,//开启分页(treegrid　无需开启)</span><br><span class="line">            jsonReader:&#123;</span><br><span class="line">                root:&quot;data&quot;,</span><br><span class="line">                repeatitems: false  </span><br><span class="line">            &#125;,//关键配置　jqgrid 默认对返回json有特殊的要求，变态到名称也是固定的。所以需要特殊配置。自定义的话　repeatiteams:false</span><br><span class="line">            treeGridModel:&apos;adjacency&apos;,//treegrid　返回ｊｓｏｎ规定的字段类型  默认nested </span><br><span class="line">            ExpandCloumn:&apos;scost_no&apos;,//树形结构icons显示的字段　最好是colModel的第一个 </span><br><span class="line">            ExpandColClick:true,//允许点击行来收缩折叠</span><br><span class="line">      treeReader : &#123;  </span><br><span class="line">           level_field: &quot;level&quot;,  //等级　</span><br><span class="line">           parent_id_field: &quot;parent&quot;,  //父id</span><br><span class="line">           leaf_field: &quot;isLeaf&quot;,  //是否是子节点</span><br><span class="line">                 expanded_field: &quot;expanded&quot; //是否已展开</span><br><span class="line">              </span><br><span class="line">            &#125;,//类似jsonreader　可自定义treegrid返回数据中必要字段的属性名 这里是adjacency　对应treeGridModel　注:这里的字段是返回数据必须的</span><br><span class="line">            hidegrid: false</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>上面简要的给配置属性添加了备注，基本是常用的，基于自己的理解可能有些错误。<br>这里写一下我遇到的坑:我给设置了ExpandCloumn:”socst_no” 但是colModel的顺序为id,scost_no,…。改为scost_no,id就行了就是这么简单愣是浪费我半天时间。shit!　<br>其实这些东西都是我看了网上的博客后写的。但在上面的这个坑可没人提及。<br><em>本文用到的jqgrid是inspinia中的　jqgrid版本4.6.0</em></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1429,9 +1420,53 @@
           
 
           
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.jianshu.com/u/a5862387f3f9" title="简书 &rarr; https://www.jianshu.com/u/a5862387f3f9" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            </div>
           
 
           
