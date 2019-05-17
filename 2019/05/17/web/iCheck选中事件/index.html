@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="在jqGrid生成的表格最后一列追加操作列： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,formatter:function(cell">
+  <meta name="description" content="在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifChecked,function()&amp;#123;        //your code&amp;#125;) 取消选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifUnchecked&amp;quot;,function()">
 <meta name="keywords" content="web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JQGrid 添加操作列">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/JQGrid 添加操作列/index.html">
+<meta property="og:title" content="iCheck选中事件">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/web/iCheck选中事件/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
-<meta property="og:description" content="在jqGrid生成的表格最后一列追加操作列： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,formatter:function(cell">
+<meta property="og:description" content="在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifChecked,function()&amp;#123;        //your code&amp;#125;) 取消选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifUnchecked&amp;quot;,function()">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-17T03:24:48.407Z">
+<meta property="og:updated_time" content="2019-05-17T03:25:00.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JQGrid 添加操作列">
-<meta name="twitter:description" content="在jqGrid生成的表格最后一列追加操作列： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,formatter:function(cell">
+<meta name="twitter:title" content="iCheck选中事件">
+<meta name="twitter:description" content="在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifChecked,function()&amp;#123;        //your code&amp;#125;) 取消选中事件：123$(&amp;quot;#iCheck&amp;quot;).on(&amp;quot;ifUnchecked&amp;quot;,function()">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/JQGrid 添加操作列/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/17/web/iCheck选中事件/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>JQGrid 添加操作列 | Hiwilliam's Blog</title>
+  <title>iCheck选中事件 | Hiwilliam's Blog</title>
   
 
 
@@ -341,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/JQGrid 添加操作列/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/iCheck选中事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hiwilliam">
@@ -358,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JQGrid 添加操作列
+          <h1 class="post-title" itemprop="name headline">iCheck选中事件
 
               
             
@@ -384,7 +384,7 @@
                 
               
 
-              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:48" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
+              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:25:00" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
             
 
             
@@ -423,9 +423,9 @@
       
 
       
-        <p>在jqGrid生成的表格最后一列追加操作列：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:btn_del&#125;</span><br><span class="line">function btn_del(cellValue,options,rowData)&#123;</span><br><span class="line">           console.log(cellValue,options,rowData);</span><br><span class="line">           btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">           return btnstr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br>  　cellValue输出的是单元格值(例子中为id的值)<br>  　options输出的是表格配置相关的json对象<br>  　rowObject输出的是当前行的数据json对象<br>  　那么就通过rowObject就可得到当前行数据的id(不是序列号),从而实现操作<br>注意事项：<br>   name属性最好选择当前行数据的id<br>  除了cellValue,option,rowData还有第四个参数输出为”add”(暂不知什么作用，吊大的请回复，学学习)<br>具体api请看官方文档<a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter" target="_blank" rel="noopener">http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter</a><br><em>本文中用是jqGrid 4.6.0 新手学习,有错请回复指出，不甚言谢</em></p>
+        <p>在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：<br>选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifChecked,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>取消选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifUnchecked&quot;,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><em>上述id注意换成实际id或者其他筛选器。</em></p>
 
       
     </div>
@@ -462,7 +462,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/WSL链接ECS/" rel="next" title="WSL链接ECS">
+              <a href="/2019/05/17/linux/WSL链接ECS/" rel="next" title="WSL链接ECS">
                 <i class="fa fa-chevron-left"></i> WSL链接ECS
               </a>
             
@@ -472,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/17/日志1/" rel="prev" title="日志1">
-                日志1 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/17/web/JQGrid 添加操作列(2)/" rel="prev" title="JQGrid 添加操作列(2)">
+                JQGrid 添加操作列(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
