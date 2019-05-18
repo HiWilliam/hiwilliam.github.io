@@ -56,16 +56,16 @@
 <link rel="stylesheet" href="/css/main.css?v=7.1.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.1.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+  <link rel="mask-icon" href="/images/logo.png?v=7.1.1" color="#222">
 
 
 
@@ -203,6 +203,10 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">死于安乐，生于忧患</p>
+      
     
     
   </div>
@@ -403,6 +407,13 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
 
@@ -479,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/web/JQGrid 开启TreeGrid/" rel="next" title="JQGrid 开启TreeGrid">
-                <i class="fa fa-chevron-left"></i> JQGrid 开启TreeGrid
+              <a href="/2019/05/17/web/iCheck选中事件/" rel="next" title="iCheck选中事件">
+                <i class="fa fa-chevron-left"></i> iCheck选中事件
               </a>
             
           </div>
@@ -489,8 +500,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/17/doc/Hexo脚本/" rel="prev" title="Hexo新建文章同时，打开编辑器">
-                Hexo新建文章同时，打开编辑器 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/17/web/JQGrid 开启TreeGrid/" rel="prev" title="JQGrid 开启TreeGrid">
+                JQGrid 开启TreeGrid <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +635,7 @@
                   
                     
                   
-                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/HiWilliam" title="GitHub &rarr; https://github.com/HiWilliam" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -635,7 +646,7 @@
                   
                     
                   
-                  <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:1216252072@qq.com" title="E-Mail &rarr; mailto:1216252072@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -723,6 +734,32 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -738,6 +775,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -879,6 +918,41 @@
   
 
   
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 
