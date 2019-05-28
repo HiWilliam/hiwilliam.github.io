@@ -111,13 +111,11 @@
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
 <meta property="og:description" content="一些废话入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。 正文收藏夹api这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和pro">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-28T14:21:51.290Z">
+<meta property="og:updated_time" content="2019-05-28T14:24:15.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis初使用">
 <meta name="twitter:description" content="一些废话入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。 正文收藏夹api这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和pro">
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="Hiwilliam's Blog" type="application/atom+xml">
@@ -388,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-05-28 21:57:38 / 修改时间：22:21:51" itemprop="dateCreated datePublished" datetime="2019-05-28T21:57:38+08:00">2019-05-28</time>
+              <time title="创建时间：2019-05-28 21:57:38 / 修改时间：22:24:15" itemprop="dateCreated datePublished" datetime="2019-05-28T21:57:38+08:00">2019-05-28</time>
             
 
             
@@ -452,9 +450,9 @@
       
 
       
-        <h4 id="一些废话"><a href="#一些废话" class="headerlink" title="一些废话"></a>一些废话</h4><p>入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。</p>
-<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h3 id="收藏夹api"><a href="#收藏夹api" class="headerlink" title="收藏夹api"></a>收藏夹api</h3><p>这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和product_id的记录。在这个项目里面它的表还带有一个自增id。在考虑不能重复收藏的时，一开始同事让我试试组合唯一索引。通过这种方式来自动实现收藏表中的user_id和product_id的组合唯一不重复的。但是后来考虑到另外一个list(当前用户所有收藏的商品)接口,会使用到user_id字段，从而使得这个组合唯一索引失效，因而放弃(这里留个问号，等实践去验证)。<br>代替上面索引的方法就是先判断数据库有没有这条收藏记录，如果有则添加失败。</p>
-<h3 id="历史足迹api"><a href="#历史足迹api" class="headerlink" title="历史足迹api"></a>历史足迹api</h3><p>下午开始写浏览商品足迹的api，还是基本的增，删，查操作。但是考虑到高并发下，采用redis实现消息队列异步的插入数据，即在将数据插入redis的list中，在通过循环不断的取出队中的数据，存入数据库，如果队列为空则睡眠一段时间，再继续循环获取(待完善)。</p>
+        <h3 id="一些废话"><a href="#一些废话" class="headerlink" title="一些废话"></a>一些废话</h3><p>入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="收藏夹api"><a href="#收藏夹api" class="headerlink" title="收藏夹api"></a>收藏夹api</h4><p>这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和product_id的记录。在这个项目里面它的表还带有一个自增id。在考虑不能重复收藏的时，一开始同事让我试试组合唯一索引。通过这种方式来自动实现收藏表中的user_id和product_id的组合唯一不重复的。但是后来考虑到另外一个list(当前用户所有收藏的商品)接口,会使用到user_id字段，从而使得这个组合唯一索引失效，因而放弃(这里留个问号，等实践去验证)。<br>代替上面索引的方法就是先判断数据库有没有这条收藏记录，如果有则添加失败。</p>
+<h4 id="历史足迹api"><a href="#历史足迹api" class="headerlink" title="历史足迹api"></a>历史足迹api</h4><p>下午开始写浏览商品足迹的api，还是基本的增，删，查操作。但是考虑到高并发下，采用redis实现消息队列异步的插入数据，即在将数据插入redis的list中，在通过循环不断的取出队中的数据，存入数据库，如果队列为空则睡眠一段时间，再继续循环获取(待完善)。</p>
 
       
     </div>
@@ -725,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一些废话"><span class="nav-number">1.</span> <span class="nav-text">一些废话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#收藏夹api"><span class="nav-number"></span> <span class="nav-text">收藏夹api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#历史足迹api"><span class="nav-number"></span> <span class="nav-text">历史足迹api</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些废话"><span class="nav-number">1.</span> <span class="nav-text">一些废话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#收藏夹api"><span class="nav-number">2.1.</span> <span class="nav-text">收藏夹api</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#历史足迹api"><span class="nav-number">2.2.</span> <span class="nav-text">历史足迹api</span></a></li></ol></li></ol></div>
             
 
           </div>
