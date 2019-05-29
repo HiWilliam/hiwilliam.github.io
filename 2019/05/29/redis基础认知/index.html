@@ -103,14 +103,18 @@
 
 
 
-  <meta name="keywords" content="coder,php,web,linux,github">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hiwilliam&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="一些废话今天主要还是写负责项目的个人中心的一些部分，例如浏览足迹和商品收藏，在边写边学边问的情况，对项目的整体的架构和一些技术有了更深的认知。 正文浏览足迹昨天下班时，写了个大概的流程，今日来具体实现，但是在这过程中，对于业务逻辑不断的做修改和重构。例如昨日的思路是将浏览足迹的相关user_id和product_id存入redis的list中(lpush)，再通过while(true)来取出数据(">
+<meta name="keywords" content="-php -redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis基础认知">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/redis基础认知/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
+<meta property="og:description" content="一些废话今天主要还是写负责项目的个人中心的一些部分，例如浏览足迹和商品收藏，在边写边学边问的情况，对项目的整体的架构和一些技术有了更深的认知。 正文浏览足迹昨天下班时，写了个大概的流程，今日来具体实现，但是在这过程中，对于业务逻辑不断的做修改和重构。例如昨日的思路是将浏览足迹的相关user_id和product_id存入redis的list中(lpush)，再通过while(true)来取出数据(">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-29T15:10:30.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hiwilliam&#39;s Blog">
+<meta name="twitter:title" content="redis基础认知">
+<meta name="twitter:description" content="一些废话今天主要还是写负责项目的个人中心的一些部分，例如浏览足迹和商品收藏，在边写边学边问的情况，对项目的整体的架构和一些技术有了更深的认知。 正文浏览足迹昨天下班时，写了个大概的流程，今日来具体实现，但是在这过程中，对于业务逻辑不断的做修改和重构。例如昨日的思路是将浏览足迹的相关user_id和product_id存入redis的list中(lpush)，再通过while(true)来取出数据(">
 
 
 
@@ -120,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/redis基础认知/">
 
 
 
@@ -130,7 +134,7 @@
   };
 </script>
 
-  <title>归档 | Hiwilliam's Blog</title>
+  <title>redis基础认知 | Hiwilliam's Blog</title>
   
 
 
@@ -178,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/HiWilliam" class="github-corner" aria-label="View source on GitHub">
       <svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
@@ -277,7 +281,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -319,420 +323,211 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/redis基础认知/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hiwilliam">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hiwilliam's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">redis基础认知
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 22:38:26 / 修改时间：23:10:30" itemprop="dateCreated datePublished" datetime="2019-05-29T22:38:26+08:00">2019-05-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 14 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目反思/" itemprop="url" rel="index"><span itemprop="name">项目反思</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/29/redis基础认知/" itemprop="url">
+          
             
-              <span itemprop="name">redis基础认知</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-29T22:38:26+08:00" content="2019-05-29">
-          05-29
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/28/experience/redis初使用/" itemprop="url">
-            
-              <span itemprop="name">redis初使用</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-28T21:57:38+08:00" content="2019-05-28">
-          05-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/27/php基础知识查漏补缺/" itemprop="url">
-            
-              <span itemprop="name">php基础知识查漏补缺</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-27T20:44:24+08:00" content="2019-05-27">
-          05-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h3 id="一些废话"><a href="#一些废话" class="headerlink" title="一些废话"></a>一些废话</h3><p>今天主要还是写负责项目的个人中心的一些部分，例如浏览足迹和商品收藏，在边写边学边问的情况，对项目的整体的架构和一些技术有了更深的认知。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="浏览足迹"><a href="#浏览足迹" class="headerlink" title="浏览足迹"></a>浏览足迹</h4><p>昨天下班时，写了个大概的流程，今日来具体实现，但是在这过程中，对于业务逻辑不断的做修改和重构。例如昨日的思路是将浏览足迹的相关user_id和product_id存入redis的list中(lpush)，<br>再通过while(true)来取出数据(rpop)并存入mysql的history表中。然而经过讨论，历史足迹有过期时间，且可以点击进入详情页，然而我们的product表是定时更新，且所有数据都要更新，那么就不能在通过product_id从mysql查出数据给到详情页。综合考虑，替换为另一种方案：取消将足迹相关数据存入list的队列，以及持久化到mysql，取而代之为将其存入set中并另建key的set来存放product info，且这里的info由前端实时的从数据源取得，保证数据的实时性。另外为两个set都添加过期时间30天设定(expire)。<br>当然这样做还是有不足的，例如在后来的写足迹列表时，发现需要分页，那么经过查找资料，这里足迹数据存储类型改为zset更为合适，并以浏览时间(date(‘Ymd’))为scroe。既保证了有序性和唯一性，且便于分页。<br>在查找redis数据分页时，我看到很多都是用hashmap和zset组合来完成，目前还没有理解这样做的缘由，待日后深入的理解。</p>
+<h4 id="收藏商品"><a href="#收藏商品" class="headerlink" title="收藏商品"></a>收藏商品</h4><p>其实今天真正写的代码不多，主要还是业务逻辑思考。所以收藏商品并没有时间去完成，不过已经流程基本理顺。基本如下<br>1:将收藏关联id(user_id,product_id)存入zset<br>2:将收藏的product info 存入set<br>3：定时将product info 转存如list队列，并循环持久化到mysql<br>具体细节参考上面。不足之处，明日再来补充。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>因为要赶项目进度，今天开始正式加班，到8.20左右下班，10.20到家，收拾收拾已经11点多了。试用期两个月，至少这两个月都将会是这个状态，不过也没什么好说的，一年的荒废换的两个的刻苦也还可以。至少这两天的学习成果还是有的，毕竟得有技术才能走下去。废话不多说了，明天还得早期。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/questions/scp-t错误/" itemprop="url">
-            
-              <span itemprop="name">scp -t错误</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-22T23:13:06+08:00" content="2019-05-22">
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/diary/日志2-5.22面试/" itemprop="url">
-            
-              <span itemprop="name">5.22面试</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-22T17:29:20+08:00" content="2019-05-22">
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/20/linux/Linux安装nginx/" itemprop="url">
-            
-              <span itemprop="name">Linux安装nginx</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T16:55:48+08:00" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/19/linux/Ubuntu-php安装redis扩展/" itemprop="url">
-            
-              <span itemprop="name">Ubuntu php安装redis扩展</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-19T17:08:15+08:00" content="2019-05-19">
-          05-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/17/doc/Hexo脚本/" itemprop="url">
-            
-              <span itemprop="name">Hexo新建文章同时，打开编辑器</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T09:53:34+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/17/diary/日志1/" itemprop="url">
-            
-              <span itemprop="name">日志1</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T09:53:34+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/17/web/JQGrid 添加操作列(2)/" itemprop="url">
-            
-              <span itemprop="name">JQGrid 添加操作列(2)</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T09:53:34+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php-redis/" rel="tag"><i class="fa fa-tag"></i> -php -redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/experience/redis初使用/" rel="next" title="redis初使用">
+                <i class="fa fa-chevron-left"></i> redis初使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDI3Mi8yMDgwNA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -752,8 +547,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -909,6 +713,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些废话"><span class="nav-number">1.</span> <span class="nav-text">一些废话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览足迹"><span class="nav-number">2.1.</span> <span class="nav-text">浏览足迹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收藏商品"><span class="nav-number">2.2.</span> <span class="nav-text">收藏商品</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1068,6 +889,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1083,6 +908,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/05/29/redis基础认知/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
