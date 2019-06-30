@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-26T14:30:40.396Z</updated>
+  <updated>2019-06-30T10:17:56.103Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dokcer(2) 搭建lnmp</title>
+    <link href="http://yoursite.com/2019/06/30/Tools/Dokcer-2-%E6%90%AD%E5%BB%BAlnmp/"/>
+    <id>http://yoursite.com/2019/06/30/Tools/Dokcer-2-搭建lnmp/</id>
+    <published>2019-06-30T07:54:41.000Z</published>
+    <updated>2019-06-30T10:17:56.103Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。</p><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><p>​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。</p><h5 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h5><p>​    默认拉取latest标签的ubuntu镜像</p><p>​    <code>docker pull ubuntu</code></p><h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><p>​    <code>docker run -it  -v d:/www:/var/www -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000  ubuntu /bin/bash</code></p><p><code>-v d:/www:/var/www</code>：设置宿主机d:/www与容器ubuntu /var/www 文件绑定共享</p><p>` -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p><p><strong>注意</strong>：因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p><h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>​    重命名新建容器为lnmp</p><p>​    <code>docker container rename [container id] lnmp</code></p><p>​    进入容器</p><p>​    <code>docker exec -it lnmp /bin/bash</code></p><h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><h5 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h5><p>​    <code>apt install php7.2</code></p><p>​    以及相关扩展，这里就不再详细写了<a href="https://blog.csdn.net/qq_16885135/article/details/79747045" target="_blank" rel="noopener">扩展链接</a></p><h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>​    以下基本与docker无关了，是linux下配置的lnmp的操作流程，这里一并写上。</p><h5 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h5><p>​    安装mysql</p><p>​    <code>apt  update</code></p><p>​    <code>apt install mysql-server</code>    </p><p>​    因为已经我们之前创建容器时，就已经映射好3306端口，因此无需再配置。</p><p>​    <code>service mysql status</code>：查看mysql服务状态</p><p>​    <code>service mysql start</code>:  开启mysql服务</p><h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="C:\Users\12162\Desktop\blog\navicat.png" alt></p><p> 和一般本地数据链接无异。但是这样很可能无法链接。会有报错：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server at &apos;reading initial communication packet&apos;</span><br></pre></td></tr></table></figure><p><strong><em>解决方法</em></strong>: 在容器中找到mysqld.conf配置文件，注释<code>bind_address 127.0.0.1</code>。(请事先安装vim)，</p><p>再次尝试链接会报错 ：</p><p><code>Access denied for user &#39;root&#39;@&#39;%</code>类似错误说明是权限问题。</p><p><strong><em>解决方法</em></strong>:进入容器ubuntu中的mysql，输入以下命令</p><p><code>grant all privileges *.* to &#39;root&#39;@&#39;%&#39; by &#39;your password&#39; with grant option;</code></p><p><code>flush privileges;</code></p><p>退出并重启mysql。再次链接成功。(目前我遇到这两个问题)</p><h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><h5 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h5><p>直接从Ubuntu的默认软件仓库中获取即可，与mysql差不多</p><p><code>apt update</code></p><p><code>apt install nginx</code></p><h5 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h5><p>添加nginx虚拟主机(php)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">cp default newhost</span><br><span class="line">vim newhost</span><br><span class="line">server &#123;</span><br><span class="line">listen 80;                                                                               listen [::]:80;                                                                        server_name wh.api.com;  </span><br><span class="line">location / &#123;</span><br><span class="line">try_files $uri $uri/ /index.php?$query_string;                                 </span><br><span class="line">if (!-e $request_filename)&#123;                                                              rewrite  ^/(.*)$  /index.php?s=/$1  last;      </span><br><span class="line">&#125;         </span><br><span class="line">&#125;</span><br><span class="line">location ~ \.php$ &#123; </span><br><span class="line">root /www/RestfulApiWithTp5/public;   </span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock; </span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="测试链接"><a href="#测试链接" class="headerlink" title="测试链接"></a>测试链接</h4><p>​    在主机打开浏览器输入虚拟主机域名。我这里是wh.api.com.。如果出现nginx 欢迎页面说明环境搭建基本ok。</p><p>（可能会是apache的欢迎页面，应该是index.html文件重名了）</p><p>​    如果出现链接失败请自行排除。推荐查看nginx错误日志，同样MySQL也最好看日志来找问题所在</p><p>​    <code>cat /etc/log/mysql/error.log</code>: 查看mysql错误日志</p><p>​    <code>cat /etc/log/nginx/error.log</code>: 查看nginx错误日志</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    至此，我的php web开发环境基本就ok了。当然这期间我耗费不少时间和精力。很多现有的解决方法并不适合自己。只能自己瞎摸索，幸运的是我还是爬出了这个小坑(还有更多的深坑等着我)。</p><p>​    最后调用自己的写的api，并且成功返回数据的那一刻，无疑是充满成就感的，吃了一个桃子奖励自己.:joy:</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。&lt;/
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker简介以及基本命令</title>
+    <link href="http://yoursite.com/2019/06/29/Tools/Docker(1)/"/>
+    <id>http://yoursite.com/2019/06/29/Tools/Docker(1)/</id>
+    <published>2019-06-29T15:44:00.000Z</published>
+    <updated>2019-06-30T05:53:20.289Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    从事web开发的我，每次更换开发环境、或者办公地点等原因时，总是要重新配置环境，下载wamp、xampp或者studyphp等集成开发环境。虽然熟悉后很是便捷，但是实际上还是会遇到不少的问题</p><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><p>​        经常出现起到安装、启动等问题。尤其是wamp这个坑爹玩意儿，当初第一次接触时还觉得它高大上，非常方便，酷炫、人性化。但是一段时间使用后，发现每次安装都会出现各种稀奇古怪的问题，例如缺少.dll文件，apche或mysql总有一无法启动，百度半天也不一点能搞定。着实令人头疼。</p><h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><p>​        正式步入工作岗位后，正式线上服务器基本都是linux(绝大多数是云服务器，例如阿里云)。然而我们开发环境基本也都是windows。虽说现在一些发行版linux系统还是很强大的。但是真正开发环境跑的少之又少(反正我到现在只遇到一个。虚拟机不算)，故而有可能会发生本地运行测试通过的程序，到了线上会挂掉。这个要是慢慢去找找的，没一点时间真的不好解决(就我目前的技术水平，大佬们除外)。</p><h4 id="契机"><a href="#契机" class="headerlink" title="契机"></a>契机</h4><p>​        综上所言，的确需要一个方法去解决。曾有人推荐我用虚拟机，但是不知为何我对它不是很感兴趣。后来遇见了docker方面相关的文章，还有一次同事的提及，因此我决定尝试了解docker这个玩意儿。</p><h3 id="基本概要"><a href="#基本概要" class="headerlink" title="基本概要"></a>基本概要</h3><h4 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h4><p>​        关于docker的一些诞生，发展等相关介绍，我就不想在去写，了解一下就行了。这里提一个链接<a href="http://www.dockerinfo.net/document" target="_blank" rel="noopener">DockerInfo</a>。</p><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul><li><p>Docker 是一个轻量级的容器，因此它可以在很短的时间内启动和关闭。</p></li><li><p>Docker容器能够帮助开发人员、系统管理员、QA和版本控制工程师在一个生产环节中一起协同工作。</p></li><li><p>Docker 容器可以运行在大多数的环境中，你可以在桌面环境、物理主机、虚拟主机再到数据中，私有或者公有云中部署</p></li><li><p>等等(以上皆引用于<a href="http://www.dockerinfo.net/document" target="_blank" rel="noopener">DockerInfo</a>,以为觉得比较重要，单独拎出)</p></li></ul><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>​    在使用docker之前需要理解一下，docker中的相关概念，不然贸然上手，可能会晕头转向。</p><p>​        <strong><em>镜像(image)：</em></strong>可以理解为安装包，就像系统时我们下载的系统镜像，同一个道理。</p><p>​        <strong><em>容器(container)：</em></strong>是通过镜像实例化后得到，类似于通过系统镜像安装后的系统。也可以类和对象的关系</p><p>​        <strong><em>镜像仓库(repository)：</em></strong>是专门存放的一类镜像(主要起分类)。有官方和第三方之别</p><p>​        <strong><em>注册服务器(registry)：</em></strong>用来管理镜像仓库</p><p>​        <strong><em>标签(tag)：</em></strong>标记一个镜像。便于快速查找镜像的版本。默认latest</p><p>​    以上是docker的一些基本名词释义(基于已有文档，简单入门操作，以及自己的一些理解。如果有误请多指正)，因为一开始使用时，不懂这些概念才导致踩了很多坑。因此在这里着重记上一笔。</p><h4 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h4><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><p>​    首先根据自己的需求从镜像仓库拉取所需的镜像。</p><p>​            <code>docker pull [image name]</code>：默认拉取tag 为latest的镜像,- a 参数是拉取该镜像名的所有镜像。</p><p>​            <code>docker image ls</code>：可查看当前已有的镜像。</p><p>​            <code>docker image rm imageID</code>:删除id为imageID的镜像。</p><p>​            <code>docker image -help</code>:查看image命令相关帮助</p><p>​        目前，以上命令最为常用。</p><p>​        我这里是拉取了ubuntu:18.10 latest镜像。</p><p>​            <code>docker pull ubuntu</code></p><h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><p>​    拉取好镜像后，就是实例化镜像，就是生成容器，docker提供了多种方式来生成容器</p><p>​        <code>docker create [image name]</code>:创建一个新容器</p><p>​        <code>docker run [image name]</code>:创建并运行一个新容器，如果本地没有指定的镜像，就尝试从仓库拉取</p><p>​    个人推荐run命令来操作，同时可以通过添加-it来实现交互操作，例如shell。</p><p><strong>注意</strong>：docker容器有独特机制,即必须有一个前台进程运行，否则就会自动退出关闭，所以，新建容器经常会遇到无论怎么开启容器，ps -a状态一看总是exited。导致无法进入容器工作。</p><p>​    所以最好是运行时就开启一个交互操作，来保证容器不会自动关闭。即</p><p>​    <code>docker run -it [container id] /bin/bash(bash path)</code></p><p>那么这样的话，进入容器就要用exec</p><p>​    <code>docker exec -it container id /bin/bash (bash path)</code></p><p>​    其实docker进入容器还有attach命令，但是，attach命令方式进入会默认进入我们创建时所开启的交互操作，那么当我们退出时，又会导致这个交互操作也随之结束，造成容器关闭。而exec则是新建交互操作。不影响原有交互操作。(具体的请自行实验)</p><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>​    关于docker还有一些常用命令：</p><p>​        <code>docker ps</code>:列出所有正在运行的容器，-a 列出所有状态的容器</p><p>​        <code>docker stop/start/restart [container id]</code>:停止/开启/重启容器</p><p>​        <code>docker rename [container id] [new name]</code>:重命名容器(非常实用)</p><p>​        <code>docker commit [container id/container name]</code>:将容器打包为一个镜像。</p><p>​    当然还有很多命令，这些只是我目前所常用，具体见<a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">docker命令</a>。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这篇文章主要是记一下对docker的介绍，为何而使用，以及基本入门操作。因为是新手，我在最开始的简单的拉取镜像，创建容器等过程中都踩了不少坑，遇到不小的困难。不过也正是这些坑让我对docker以及docker的命令有了更深的理解。因为我是php web开发。所以打算弄一个继承环境来玩玩。(我的真机环境是win10 pro insider preview )。</p><p><strong><em>如果有错请指正，不甚言谢</em></strong></p><p>​        </p><p>​            </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;​    从事web开发的我，每次更换开发环境、或者办公地点等原因时，总是要重新配置环境，下载wamp、xampp或者studyphp等集成
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>windows terminal 预览版个性化设置</title>
@@ -33,31 +85,6 @@
       
     
     </summary>
-    
-    
-      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker简介以及基本命令</title>
-    <link href="http://yoursite.com/2019/06/26/Tools/Docker(1)/"/>
-    <id>http://yoursite.com/2019/06/26/Tools/Docker(1)/</id>
-    <published>2019-06-26T13:12:38.000Z</published>
-    <updated>2019-06-29T15:43:58.490Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    从事web开发的我，每次更换开发环境、或者办公地点等原因时，总是要重新配置环境，下载wamp、xampp或者studyphp等集成开发环境。虽然熟悉后很是便捷，但是实际上还是会遇到不少的问题</p><h4 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h4><p>​        经常出现起到安装、启动等问题。尤其是wamp这个坑爹玩意儿，当初第一次接触时还觉得它高大上，非常方便，酷炫、人性化。但是一段时间使用后，发现每次安装都会出现各种稀奇古怪的问题，例如缺少.dll文件，apche或mysql总有一无法启动，百度半天也不一点能搞定。着实令人头疼。</p><h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><p>​        正式步入工作岗位后，正式线上服务器基本都是linux(绝大多数是云服务器，例如阿里云)。然而我们开发环境基本也都是windows。虽说现在一些发行版linux系统还是很强大的。但是真正开发环境跑的少之又少(反正我到现在只遇到一个。虚拟机不算)，故而有可能会发生本地运行测试通过的程序，到了线上会挂掉。这个要是慢慢去找找的，没一点时间真的不好解决(就我目前的技术水平，大佬们除外)。</p><h4 id="契机"><a href="#契机" class="headerlink" title="契机"></a>契机</h4><p>​        综上所言，的确需要一个方法去解决。曾有人推荐我用虚拟机，但是不知为何我对它不是很感兴趣。后来遇见了docker方面相关的文章，还有一次同事的提及，因此我决定尝试了解docker这个玩意儿。</p><h3 id="基本概要"><a href="#基本概要" class="headerlink" title="基本概要"></a>基本概要</h3><h4 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h4><p>​        关于docker的一些诞生，发展等相关介绍，我就不想在去写，了解一下就行了。这里提一个链接<a href="http://www.dockerinfo.net/document" target="_blank" rel="noopener">DockerInfo</a>。</p><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul><li><p>Docker 是一个轻量级的容器，因此它可以在很短的时间内启动和关闭。</p></li><li><p>Docker容器能够帮助开发人员、系统管理员、QA和版本控制工程师在一个生产环节中一起协同工作。</p></li><li><p>Docker 容器可以运行在大多数的环境中，你可以在桌面环境、物理主机、虚拟主机再到数据中，私有或者公有云中部署</p></li><li><p>等等(以上皆引用于<a href="http://www.dockerinfo.net/document" target="_blank" rel="noopener">DockerInfo</a>,以为觉得比较重要，单独拎出)</p></li></ul><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>​    在使用docker之前需要理解一下，docker中的相关概念，不然贸然上手，可能会晕头转向。</p><p>​        <strong><em>镜像(image)：</em></strong>可以理解为安装包，就像系统时我们下载的系统镜像，同一个道理。</p><p>​        <strong><em>容器(container)：</em></strong>是通过镜像实例化后得到，类似于通过系统镜像安装后的系统。也可以类和对象的关系</p><p>​        <strong><em>镜像仓库(repository)：</em></strong>是专门存放的一类镜像(主要起分类)。有官方和第三方之别</p><p>​        <strong><em>注册服务器(registry)：</em></strong>用来管理镜像仓库</p><p>​        <strong><em>标签(tag)：</em></strong>标记一个镜像。便于快速查找镜像的版本。默认latest</p><p>​    以上是docker的一些基本名词释义(基于已有文档，简单入门操作，以及自己的一些理解。如果有误请多指正)，因为一开始使用时，不懂这些概念才导致踩了很多坑。因此在这里着重记上一笔。</p><h4 id="入门操作"><a href="#入门操作" class="headerlink" title="入门操作"></a>入门操作</h4><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><p>​    首先根据自己的需求从镜像仓库拉取所需的镜像。</p><p>​            <code>docker pull [image name]</code>：默认拉取tag 为latest的镜像,- a 参数是拉取该镜像名的所有镜像。</p><p>​            <code>docker image ls</code>：可查看当前已有的镜像。</p><p>​            <code>docker image rm imageID</code>:删除id为imageID的镜像。</p><p>​            <code>docker image -help</code>:查看image命令相关帮助</p><p>​        目前，以上命令最为常用。</p><p>​        我这里是拉取了ubuntu:18.10 latest镜像。</p><p>​            <code>docker pull ubuntu</code></p><h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><p>​    拉取好镜像后，就是实例化镜像，就是生成容器，docker提供了多种方式来生成容器</p><p>​        <code>docker create [image name]</code>:创建一个新容器</p><p>​        <code>docker run [image name]</code>:创建并运行一个新容器，如果本地没有指定的镜像，就尝试从仓库拉取</p><p>​    个人推荐run命令来操作，同时可以通过添加-it来实现交互操作，例如shell。</p><p><strong>注意</strong>：docker容器有独特机制,即必须有一个前台进程运行，否则就会自动退出关闭，所以，新建容器经常会遇到无论怎么开启容器，ps -a状态一看总是exited。导致无法进入容器工作。</p><p>​    所以最好是运行时就开启一个交互操作，来保证容器不会自动关闭。即</p><p>​    <code>docker run -it [container id] /bin/bash(bash path)</code></p><p>那么这样的话，进入容器就要用exec</p><p>​    <code>docker exec -it container id /bin/bash (bash path)</code></p><p>​    其实docker进入容器还有attach命令，但是，attach命令方式进入会默认进入我们创建时所开启的交互操作，那么当我们退出时，又会导致这个交互操作也随之结束，造成容器关闭。而exec则是新建交互操作。不影响原有交互操作。(具体的请自行实验)</p><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>​    关于docker还有一些常用命令：</p><p>​        <code>docker ps</code>:列出所有正在运行的容器，-a 列出所有状态的容器</p><p>​        <code>docker stop/start/restart [container id]</code>:停止/开启/重启容器</p><p>​        <code>docker rename [container id] [new name]</code>:重命名容器(非常实用)</p><p>​        <code>docker commit [container id/container name]</code>:将容器打包为一个镜像。</p><p>​    当然还有很多命令，这些只是我目前所常用，具体见<a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">docker命令</a>。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这篇文章主要是记一下对docker的介绍，为何而使用，以及基本入门操作。因为是新手，我在最开始的简单的拉取镜像，创建容器等过程中都踩了不少坑，遇到不小的困难。不过也正是这些坑让我对docker以及docker的命令有了更深的理解。因为我是php web开发。所以打算弄一个继承环境来玩玩。(我的真机环境是win10 pro insider preview )。</p><p><strong><em>如果有错请指正，不甚言谢</em></strong></p><p>​        </p><p>​            </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;​    从事web开发的我，每次更换开发环境、或者办公地点等原因时，总是要重新配置环境，下载wamp、xampp或者studyphp等集成
-      
-    
-    </summary>
-    
-      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
     
     
       <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
@@ -276,98 +303,6 @@
   </entry>
   
   <entry>
-    <title>WSL链接ECS</title>
-    <link href="http://yoursite.com/2019/05/17/linux/WSL%E9%93%BE%E6%8E%A5ECS/"/>
-    <id>http://yoursite.com/2019/05/17/linux/WSL链接ECS/</id>
-    <published>2019-05-17T01:53:34.000Z</published>
-    <updated>2019-05-17T03:13:49.858Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="闲话"><a href="#闲话" class="headerlink" title="闲话"></a>闲话</h3><p>前阵子闲着无聊，买了一个月的阿里云ECS来折腾一下。经过不懈努力，天翻地覆的找资料，终于安装好了wordpress，勉强弄好了一个简易博客。(坑爹的阿里要买三个月的才能备案，绑定域名)，后来看到了Windows的开发者大会，了解了WSL这个新奇的玩意儿，忽然想起之前链接ECS的服务器太麻烦了，也没用Ubuntu原生terminal的感觉，在初步了解WSL后我决定替换以前的方法。其实WSL远程链接ECS就是找个linux链接ECS的方法，但是毕竟在Windows主机上弄，我只想说尽是些花里胡哨的，但是酷啊！（另外不得不夸奖一下微软对开源的态度，真的原来越棒，真香）。<br>闲话少说！开始正题！关于WSL的安装我就不细说了，因为网上有太多的答案，随便找个的<a href="https://www.jianshu.com/p/6b02948b3d37" target="_blank" rel="noopener">https://www.jianshu.com/p/6b02948b3d37</a><br>我装的是Ubuntu18.04</p><h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><p>阿里云官方推荐了<strong>两个*</strong>Linux ssh链接ECS的方法</p><h4 id="第一个："><a href="#第一个：" class="headerlink" title="第一个："></a>第一个：</h4><p>初次使用,设置.pem密钥文件的权限为400<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 400 密钥路径</span><br></pre></td></tr></table></figure></p><p>开始链接:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i [密钥路径] username@ip</span><br></pre></td></tr></table></figure></p><p><em>这个方法除了第一次设置一下权限，算是很方便了，但是对我来说链接部分实在有点难以接受，果断放弃</em></p><h4 id="第二个："><a href="#第二个：" class="headerlink" title="第二个："></a>第二个：</h4><p>配置ssh_config文件：<br><em>备份配置文件，养成好习惯</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config_bak</span><br><span class="line">sudo vim /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure></p><p>添加或修改属性如下<em>官方配置</em><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host ecs//实例名 随便取，简单最好</span><br><span class="line">HostName ip //自己服务器的ip地址</span><br><span class="line">Port 22</span><br><span class="line">User root</span><br><span class="line">IdentityFile ~/.ssh/privatekey.pem//密钥的路径</span><br></pre></td></tr></table></figure></p><p>接着保存并重启<em>注意这里的环境是WSL,没有sytemctl</em><br>重启服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure></p><p>开始链接:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ecs //自己的实例名</span><br></pre></td></tr></table></figure></p><p>出现下面提示代表链接成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Alibaba Cloud Elastic Compute Service !</span><br></pre></td></tr></table></figure></p><p>以后使用只需简短的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ecs</span><br></pre></td></tr></table></figure></p><p><em>如果不行请先看下面填坑的内容</em></p><h3 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h3><p>当然上面的过程是我在经过半天摸索后的达到效果，中间还有一大堆的坑</p><h4 id="一-重装openssh"><a href="#一-重装openssh" class="headerlink" title="一:重装openssh"></a>一:重装openssh</h4><p>WSL安装好后自带了openssh,但是测试后不好使，查找资料发现是版本的问题，具体没深究，既然如此那么只有重装了，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove openssh-server</span><br><span class="line">//不知道为啥，他还提示我client版本也不对，没法也得重装</span><br><span class="line">sudo apt remove openssh-client</span><br></pre></td></tr></table></figure></p><p><em>接下来就遇到一个大坑</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br><span class="line">sudo apt install openssh-client</span><br></pre></td></tr></table></figure></p><p>上面的安装命令的结果都是报错了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E: Could not read response to hello message from hook [ ! -f /usr/bin/snap ] || /usr/bin/snap advise-snap --from-apt 2&gt;/dev/null || true: Success</span><br></pre></td></tr></table></figure></p><p>这是什么鬼玩意儿，百度没找到，还好有谷歌<br><a href="https://askubuntu.com/questions/1123159/wsl-ubuntu-18-04-broken-apt?answertab=oldest#tab-top" target="_blank" rel="noopener">https://askubuntu.com/questions/1123159/wsl-ubuntu-18-04-broken-apt?answertab=oldest#tab-top</a><br>有个解决方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf</span><br></pre></td></tr></table></figure></p><p>楼主它下面的回复是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Quick and dirty, but it did the trick.</span><br></pre></td></tr></table></figure></p><p>我也尝试了一下，ojbk（具体原因不去弄懂，感觉很麻烦的说）</p><h4 id="二：ssh安装和权限设置"><a href="#二：ssh安装和权限设置" class="headerlink" title="二：ssh安装和权限设置"></a>二：ssh安装和权限设置</h4><p>上面的openssh安装好后，按照官方的教程还是有问题的</p><h5 id="1："><a href="#1：" class="headerlink" title="1："></a>1：</h5><p>这里是WSL，但是我的.pem密钥文件在其他硬盘，一开始我很傻逼直接写成下面这样子<br><code>IdentityFile D:\linux\key.pem</code><br>这是因为WSL和linux一样是挂载了硬盘,所以应该改为<br><code>IdentityFile  /mnt/d/linux/key.pem</code></p><h5 id="2"><a href="#2" class="headerlink" title="2:"></a>2:</h5><p>改好后测试结果出现了一个更奇葩的问题，弹出默认权限777太open了，不允许链接，那好按照官方的改为400但是发现不对，因为linux和windows权限不一样，所以无法修改，因而复制密钥文件到~/.ssh下再修改<br><code>sudo chmod 400 ~/.ssh/key.pem</code><br>那么<br><code>IdentityFile ~/.ssh/key.pem</code><br>3:如果当前登录身份为root可能会报错：<br><code>Permission denied (publickey,gssapi-keyex,gssapi-with-mic)</code><br>那么请切换到普通用户登录，这个问题我也看到相关的解决方法就是简单在ssh_config添加<br><code>PermitRootLogin yes</code><br>但是没成功。因为没啥影响，就不深究下去</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;闲话&quot;&gt;&lt;a href=&quot;#闲话&quot; class=&quot;headerlink&quot; title=&quot;闲话&quot;&gt;&lt;/a&gt;闲话&lt;/h3&gt;&lt;p&gt;前阵子闲着无聊，买了一个月的阿里云ECS来折腾一下。经过不懈努力，天翻地覆的找资料，终于安装好了wordpress，勉强弄好了一个简易博客。
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQGrid 开启TreeGrid</title>
-    <link href="http://yoursite.com/2019/05/17/web/JQGrid%20%E5%BC%80%E5%90%AFTreeGrid/"/>
-    <id>http://yoursite.com/2019/05/17/web/JQGrid 开启TreeGrid/</id>
-    <published>2019-05-17T01:53:34.000Z</published>
-    <updated>2019-05-17T03:24:34.116Z</updated>
-    
-    <content type="html"><![CDATA[<p> 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#table_list_2&quot;).jqGrid(&#123;</span><br><span class="line">            url:&quot;&#123;:url(&apos;Table/load_treeGrid&apos;)&#125;&quot;,//表格数据初步加载请求地址　tp5写法</span><br><span class="line">            datatype:&quot;json&quot;,//返回数据类型　必须写</span><br><span class="line">            height: &quot;100%&quot;,</span><br><span class="line">            width:&apos;100%&apos;,</span><br><span class="line">            autowidth: true,</span><br><span class="line">            shrinkToFit: true,//表格宽度自动充满</span><br><span class="line">            sortable:true,//开启可拖动功能</span><br><span class="line">            treeGrid:true,//开启treegrid功能</span><br><span class="line">            // multiSort: true,//组合查询功能</span><br><span class="line">            colNames:[&apos;部门代号&apos;,&apos;id&apos;,&apos;部门名称&apos;,&apos;部门类型&apos;,&apos;负责人&apos;,&apos;联系号码&apos;,&apos;录入日期&apos;,&apos;修改日期&apos;,&apos;状态&apos;],//自定义列明　　需要和下面colmodel一一对应</span><br><span class="line">            colModel:[</span><br><span class="line">                &#123;name:&apos;scost_no&apos;,index:&apos;scost_no&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;id&apos;,index:&apos;id&apos;,hidden:true,key:true&#125;,//开启treegrid功能情况下 id(类似字段)必须有　</span><br><span class="line">                &#123;name:&apos;dept_name&apos;,index:&apos;dept_name&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;dept_type&apos;,index:&apos;dept_type&apos;,sortable:false,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;leader&apos;,index:&apos;leader&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;tel&apos;,index:&apos;tel&apos; ,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_entry&apos;,index:&apos;date_entry&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_update&apos;,index:&apos;date_update&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;status&apos;,index:&apos;status&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">            ],</span><br><span class="line">            pager:true,//开启分页(treegrid　无需开启)</span><br><span class="line">            jsonReader:&#123;</span><br><span class="line">                root:&quot;data&quot;,</span><br><span class="line">                repeatitems: false  </span><br><span class="line">            &#125;,//关键配置　jqgrid 默认对返回json有特殊的要求，变态到名称也是固定的。所以需要特殊配置。自定义的话　repeatiteams:false</span><br><span class="line">            treeGridModel:&apos;adjacency&apos;,//treegrid　返回ｊｓｏｎ规定的字段类型  默认nested </span><br><span class="line">            ExpandCloumn:&apos;scost_no&apos;,//树形结构icons显示的字段　最好是colModel的第一个 </span><br><span class="line">            ExpandColClick:true,//允许点击行来收缩折叠</span><br><span class="line">      treeReader : &#123;  </span><br><span class="line">           level_field: &quot;level&quot;,  //等级　</span><br><span class="line">           parent_id_field: &quot;parent&quot;,  //父id</span><br><span class="line">           leaf_field: &quot;isLeaf&quot;,  //是否是子节点</span><br><span class="line">                 expanded_field: &quot;expanded&quot; //是否已展开</span><br><span class="line">              </span><br><span class="line">            &#125;,//类似jsonreader　可自定义treegrid返回数据中必要字段的属性名 这里是adjacency　对应treeGridModel　注:这里的字段是返回数据必须的</span><br><span class="line">            hidegrid: false</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p><p>上面简要的给配置属性添加了备注，基本是常用的，基于自己的理解可能有些错误。<br>这里写一下我遇到的坑:我给设置了ExpandCloumn:”socst_no” 但是colModel的顺序为id,scost_no,…。改为scost_no,id就行了就是这么简单愣是浪费我半天时间。shit!　<br>其实这些东西都是我看了网上的博客后写的。但在上面的这个坑可没人提及。<br><em>本文用到的jqgrid是inspinia中的　jqgrid版本4.6.0</em></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt; 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:&lt;br&gt;&lt;figure class=&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JQGrid 添加操作列</title>
-    <link href="http://yoursite.com/2019/05/17/web/JQGrid%20%E6%B7%BB%E5%8A%A0%E6%93%8D%E4%BD%9C%E5%88%97/"/>
-    <id>http://yoursite.com/2019/05/17/web/JQGrid 添加操作列/</id>
-    <published>2019-05-17T01:53:34.000Z</published>
-    <updated>2019-05-17T03:24:48.407Z</updated>
-    
-    <content type="html"><![CDATA[<p>在jqGrid生成的表格最后一列追加操作列：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p><p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:btn_del&#125;</span><br><span class="line">function btn_del(cellValue,options,rowData)&#123;</span><br><span class="line">           console.log(cellValue,options,rowData);</span><br><span class="line">           btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">           return btnstr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p><p>输出：<br>  　cellValue输出的是单元格值(例子中为id的值)<br>  　options输出的是表格配置相关的json对象<br>  　rowObject输出的是当前行的数据json对象<br>  　那么就通过rowObject就可得到当前行数据的id(不是序列号),从而实现操作<br>注意事项：<br>   name属性最好选择当前行数据的id<br>  除了cellValue,option,rowData还有第四个参数输出为”add”(暂不知什么作用，吊大的请回复，学学习)<br>具体api请看官方文档<a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter" target="_blank" rel="noopener">http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter</a><br><em>本文中用是jqGrid 4.6.0 新手学习,有错请回复指出，不甚言谢</em></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在jqGrid生成的表格最后一列追加操作列：&lt;br&gt; &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=
-      
-    
-    </summary>
-    
-    
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iCheck选中事件</title>
-    <link href="http://yoursite.com/2019/05/17/web/iCheck%E9%80%89%E4%B8%AD%E4%BA%8B%E4%BB%B6/"/>
-    <id>http://yoursite.com/2019/05/17/web/iCheck选中事件/</id>
-    <published>2019-05-17T01:53:34.000Z</published>
-    <updated>2019-05-17T03:25:00.311Z</updated>
-    
-    <content type="html"><![CDATA[<p>在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：<br>选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifChecked,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p>取消选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifUnchecked&quot;,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p><em>上述id注意换成实际id或者其他筛选器。</em></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：&lt;br&gt;选中事件：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1
-      
-    
-    </summary>
-    
-    
-      <category term="web" scheme="http://yoursite.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
     <title>日志1</title>
     <link href="http://yoursite.com/2019/05/17/diary/%E6%97%A5%E5%BF%971/"/>
     <id>http://yoursite.com/2019/05/17/diary/日志1/</id>
@@ -410,6 +345,98 @@
     
     
       <category term="博客教程" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQGrid 开启TreeGrid</title>
+    <link href="http://yoursite.com/2019/05/17/web/JQGrid%20%E5%BC%80%E5%90%AFTreeGrid/"/>
+    <id>http://yoursite.com/2019/05/17/web/JQGrid 开启TreeGrid/</id>
+    <published>2019-05-17T01:53:34.000Z</published>
+    <updated>2019-05-17T03:24:34.116Z</updated>
+    
+    <content type="html"><![CDATA[<p> 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#table_list_2&quot;).jqGrid(&#123;</span><br><span class="line">            url:&quot;&#123;:url(&apos;Table/load_treeGrid&apos;)&#125;&quot;,//表格数据初步加载请求地址　tp5写法</span><br><span class="line">            datatype:&quot;json&quot;,//返回数据类型　必须写</span><br><span class="line">            height: &quot;100%&quot;,</span><br><span class="line">            width:&apos;100%&apos;,</span><br><span class="line">            autowidth: true,</span><br><span class="line">            shrinkToFit: true,//表格宽度自动充满</span><br><span class="line">            sortable:true,//开启可拖动功能</span><br><span class="line">            treeGrid:true,//开启treegrid功能</span><br><span class="line">            // multiSort: true,//组合查询功能</span><br><span class="line">            colNames:[&apos;部门代号&apos;,&apos;id&apos;,&apos;部门名称&apos;,&apos;部门类型&apos;,&apos;负责人&apos;,&apos;联系号码&apos;,&apos;录入日期&apos;,&apos;修改日期&apos;,&apos;状态&apos;],//自定义列明　　需要和下面colmodel一一对应</span><br><span class="line">            colModel:[</span><br><span class="line">                &#123;name:&apos;scost_no&apos;,index:&apos;scost_no&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;id&apos;,index:&apos;id&apos;,hidden:true,key:true&#125;,//开启treegrid功能情况下 id(类似字段)必须有　</span><br><span class="line">                &#123;name:&apos;dept_name&apos;,index:&apos;dept_name&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;dept_type&apos;,index:&apos;dept_type&apos;,sortable:false,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;leader&apos;,index:&apos;leader&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;tel&apos;,index:&apos;tel&apos; ,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_entry&apos;,index:&apos;date_entry&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;date_update&apos;,index:&apos;date_update&apos;,formatter:&quot;date&quot;,formatoptions:&#123;srcformat:&apos;Y-m-d H:i:s&apos;,newformat:&apos;Y-m-d&apos;&#125;,align:&quot;left&quot;&#125;,</span><br><span class="line">                &#123;name:&apos;status&apos;,index:&apos;status&apos;,align:&quot;left&quot;&#125;,</span><br><span class="line">            ],</span><br><span class="line">            pager:true,//开启分页(treegrid　无需开启)</span><br><span class="line">            jsonReader:&#123;</span><br><span class="line">                root:&quot;data&quot;,</span><br><span class="line">                repeatitems: false  </span><br><span class="line">            &#125;,//关键配置　jqgrid 默认对返回json有特殊的要求，变态到名称也是固定的。所以需要特殊配置。自定义的话　repeatiteams:false</span><br><span class="line">            treeGridModel:&apos;adjacency&apos;,//treegrid　返回ｊｓｏｎ规定的字段类型  默认nested </span><br><span class="line">            ExpandCloumn:&apos;scost_no&apos;,//树形结构icons显示的字段　最好是colModel的第一个 </span><br><span class="line">            ExpandColClick:true,//允许点击行来收缩折叠</span><br><span class="line">      treeReader : &#123;  </span><br><span class="line">           level_field: &quot;level&quot;,  //等级　</span><br><span class="line">           parent_id_field: &quot;parent&quot;,  //父id</span><br><span class="line">           leaf_field: &quot;isLeaf&quot;,  //是否是子节点</span><br><span class="line">                 expanded_field: &quot;expanded&quot; //是否已展开</span><br><span class="line">              </span><br><span class="line">            &#125;,//类似jsonreader　可自定义treegrid返回数据中必要字段的属性名 这里是adjacency　对应treeGridModel　注:这里的字段是返回数据必须的</span><br><span class="line">            hidegrid: false</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p><p>上面简要的给配置属性添加了备注，基本是常用的，基于自己的理解可能有些错误。<br>这里写一下我遇到的坑:我给设置了ExpandCloumn:”socst_no” 但是colModel的顺序为id,scost_no,…。改为scost_no,id就行了就是这么简单愣是浪费我半天时间。shit!　<br>其实这些东西都是我看了网上的博客后写的。但在上面的这个坑可没人提及。<br><em>本文用到的jqgrid是inspinia中的　jqgrid版本4.6.0</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 在按照任务写一个web app时，使用了jqGrid表格插件其中使用了TreeGrid，查了许多教程，调整了很多方面，遇到不少的坑。在这里记录一下。 要使用jqgrid的treegrid功能需要开启treegrid功能,配置代码如下:&lt;br&gt;&lt;figure class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WSL链接ECS</title>
+    <link href="http://yoursite.com/2019/05/17/linux/WSL%E9%93%BE%E6%8E%A5ECS/"/>
+    <id>http://yoursite.com/2019/05/17/linux/WSL链接ECS/</id>
+    <published>2019-05-17T01:53:34.000Z</published>
+    <updated>2019-05-17T03:13:49.858Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="闲话"><a href="#闲话" class="headerlink" title="闲话"></a>闲话</h3><p>前阵子闲着无聊，买了一个月的阿里云ECS来折腾一下。经过不懈努力，天翻地覆的找资料，终于安装好了wordpress，勉强弄好了一个简易博客。(坑爹的阿里要买三个月的才能备案，绑定域名)，后来看到了Windows的开发者大会，了解了WSL这个新奇的玩意儿，忽然想起之前链接ECS的服务器太麻烦了，也没用Ubuntu原生terminal的感觉，在初步了解WSL后我决定替换以前的方法。其实WSL远程链接ECS就是找个linux链接ECS的方法，但是毕竟在Windows主机上弄，我只想说尽是些花里胡哨的，但是酷啊！（另外不得不夸奖一下微软对开源的态度，真的原来越棒，真香）。<br>闲话少说！开始正题！关于WSL的安装我就不细说了，因为网上有太多的答案，随便找个的<a href="https://www.jianshu.com/p/6b02948b3d37" target="_blank" rel="noopener">https://www.jianshu.com/p/6b02948b3d37</a><br>我装的是Ubuntu18.04</p><h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><p>阿里云官方推荐了<strong>两个*</strong>Linux ssh链接ECS的方法</p><h4 id="第一个："><a href="#第一个：" class="headerlink" title="第一个："></a>第一个：</h4><p>初次使用,设置.pem密钥文件的权限为400<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 400 密钥路径</span><br></pre></td></tr></table></figure></p><p>开始链接:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i [密钥路径] username@ip</span><br></pre></td></tr></table></figure></p><p><em>这个方法除了第一次设置一下权限，算是很方便了，但是对我来说链接部分实在有点难以接受，果断放弃</em></p><h4 id="第二个："><a href="#第二个：" class="headerlink" title="第二个："></a>第二个：</h4><p>配置ssh_config文件：<br><em>备份配置文件，养成好习惯</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config_bak</span><br><span class="line">sudo vim /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure></p><p>添加或修改属性如下<em>官方配置</em><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host ecs//实例名 随便取，简单最好</span><br><span class="line">HostName ip //自己服务器的ip地址</span><br><span class="line">Port 22</span><br><span class="line">User root</span><br><span class="line">IdentityFile ~/.ssh/privatekey.pem//密钥的路径</span><br></pre></td></tr></table></figure></p><p>接着保存并重启<em>注意这里的环境是WSL,没有sytemctl</em><br>重启服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure></p><p>开始链接:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ecs //自己的实例名</span><br></pre></td></tr></table></figure></p><p>出现下面提示代表链接成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Alibaba Cloud Elastic Compute Service !</span><br></pre></td></tr></table></figure></p><p>以后使用只需简短的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ecs</span><br></pre></td></tr></table></figure></p><p><em>如果不行请先看下面填坑的内容</em></p><h3 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h3><p>当然上面的过程是我在经过半天摸索后的达到效果，中间还有一大堆的坑</p><h4 id="一-重装openssh"><a href="#一-重装openssh" class="headerlink" title="一:重装openssh"></a>一:重装openssh</h4><p>WSL安装好后自带了openssh,但是测试后不好使，查找资料发现是版本的问题，具体没深究，既然如此那么只有重装了，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove openssh-server</span><br><span class="line">//不知道为啥，他还提示我client版本也不对，没法也得重装</span><br><span class="line">sudo apt remove openssh-client</span><br></pre></td></tr></table></figure></p><p><em>接下来就遇到一个大坑</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br><span class="line">sudo apt install openssh-client</span><br></pre></td></tr></table></figure></p><p>上面的安装命令的结果都是报错了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E: Could not read response to hello message from hook [ ! -f /usr/bin/snap ] || /usr/bin/snap advise-snap --from-apt 2&gt;/dev/null || true: Success</span><br></pre></td></tr></table></figure></p><p>这是什么鬼玩意儿，百度没找到，还好有谷歌<br><a href="https://askubuntu.com/questions/1123159/wsl-ubuntu-18-04-broken-apt?answertab=oldest#tab-top" target="_blank" rel="noopener">https://askubuntu.com/questions/1123159/wsl-ubuntu-18-04-broken-apt?answertab=oldest#tab-top</a><br>有个解决方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf</span><br></pre></td></tr></table></figure></p><p>楼主它下面的回复是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Quick and dirty, but it did the trick.</span><br></pre></td></tr></table></figure></p><p>我也尝试了一下，ojbk（具体原因不去弄懂，感觉很麻烦的说）</p><h4 id="二：ssh安装和权限设置"><a href="#二：ssh安装和权限设置" class="headerlink" title="二：ssh安装和权限设置"></a>二：ssh安装和权限设置</h4><p>上面的openssh安装好后，按照官方的教程还是有问题的</p><h5 id="1："><a href="#1：" class="headerlink" title="1："></a>1：</h5><p>这里是WSL，但是我的.pem密钥文件在其他硬盘，一开始我很傻逼直接写成下面这样子<br><code>IdentityFile D:\linux\key.pem</code><br>这是因为WSL和linux一样是挂载了硬盘,所以应该改为<br><code>IdentityFile  /mnt/d/linux/key.pem</code></p><h5 id="2"><a href="#2" class="headerlink" title="2:"></a>2:</h5><p>改好后测试结果出现了一个更奇葩的问题，弹出默认权限777太open了，不允许链接，那好按照官方的改为400但是发现不对，因为linux和windows权限不一样，所以无法修改，因而复制密钥文件到~/.ssh下再修改<br><code>sudo chmod 400 ~/.ssh/key.pem</code><br>那么<br><code>IdentityFile ~/.ssh/key.pem</code><br>3:如果当前登录身份为root可能会报错：<br><code>Permission denied (publickey,gssapi-keyex,gssapi-with-mic)</code><br>那么请切换到普通用户登录，这个问题我也看到相关的解决方法就是简单在ssh_config添加<br><code>PermitRootLogin yes</code><br>但是没成功。因为没啥影响，就不深究下去</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;闲话&quot;&gt;&lt;a href=&quot;#闲话&quot; class=&quot;headerlink&quot; title=&quot;闲话&quot;&gt;&lt;/a&gt;闲话&lt;/h3&gt;&lt;p&gt;前阵子闲着无聊，买了一个月的阿里云ECS来折腾一下。经过不懈努力，天翻地覆的找资料，终于安装好了wordpress，勉强弄好了一个简易博客。
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iCheck选中事件</title>
+    <link href="http://yoursite.com/2019/05/17/web/iCheck%E9%80%89%E4%B8%AD%E4%BA%8B%E4%BB%B6/"/>
+    <id>http://yoursite.com/2019/05/17/web/iCheck选中事件/</id>
+    <published>2019-05-17T01:53:34.000Z</published>
+    <updated>2019-05-17T03:25:00.311Z</updated>
+    
+    <content type="html"><![CDATA[<p>在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：<br>选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifChecked,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p>取消选中事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#iCheck&quot;).on(&quot;ifUnchecked&quot;,function()&#123;</span><br><span class="line">        //your code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p><em>上述id注意换成实际id或者其他筛选器。</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在项目遇到给icheck插件下的checkbox添加事件的问题，查询得知：&lt;br&gt;选中事件：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQGrid 添加操作列</title>
+    <link href="http://yoursite.com/2019/05/17/web/JQGrid%20%E6%B7%BB%E5%8A%A0%E6%93%8D%E4%BD%9C%E5%88%97/"/>
+    <id>http://yoursite.com/2019/05/17/web/JQGrid 添加操作列/</id>
+    <published>2019-05-17T01:53:34.000Z</published>
+    <updated>2019-05-17T03:24:48.407Z</updated>
+    
+    <content type="html"><![CDATA[<p>在jqGrid生成的表格最后一列追加操作列：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p><p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:btn_del&#125;</span><br><span class="line">function btn_del(cellValue,options,rowData)&#123;</span><br><span class="line">           console.log(cellValue,options,rowData);</span><br><span class="line">           btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">           return btnstr;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p><p>输出：<br>  　cellValue输出的是单元格值(例子中为id的值)<br>  　options输出的是表格配置相关的json对象<br>  　rowObject输出的是当前行的数据json对象<br>  　那么就通过rowObject就可得到当前行数据的id(不是序列号),从而实现操作<br>注意事项：<br>   name属性最好选择当前行数据的id<br>  除了cellValue,option,rowData还有第四个参数输出为”add”(暂不知什么作用，吊大的请回复，学学习)<br>具体api请看官方文档<a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter" target="_blank" rel="noopener">http://www.trirand.com/jqgridwiki/doku.php?id=wiki:custom_formatter</a><br><em>本文中用是jqGrid 4.6.0 新手学习,有错请回复指出，不甚言谢</em></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在jqGrid生成的表格最后一列追加操作列：&lt;br&gt; &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="http://yoursite.com/tags/web/"/>
     
   </entry>
   
