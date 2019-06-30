@@ -111,12 +111,12 @@
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
 <meta property="og:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="c:/Users/12162/Desktop/blog/navicat.png">
-<meta property="og:updated_time" content="2019-06-30T10:17:56.103Z">
+<meta property="og:image" content="http://yoursite.com/images/navicat.png">
+<meta property="og:updated_time" content="2019-06-30T10:23:54.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dokcer(2) 搭建lnmp">
 <meta name="twitter:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
-<meta name="twitter:image" content="c:/Users/12162/Desktop/blog/navicat.png">
+<meta name="twitter:image" content="http://yoursite.com/images/navicat.png">
 
 
 
@@ -388,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-06-30 15:54:41 / 修改时间：18:17:56" itemprop="dateCreated datePublished" datetime="2019-06-30T15:54:41+08:00">2019-06-30</time>
+              <time title="创建时间：2019-06-30 15:54:41 / 修改时间：18:23:54" itemprop="dateCreated datePublished" datetime="2019-06-30T15:54:41+08:00">2019-06-30</time>
             
 
             
@@ -458,7 +458,7 @@
 <p>​    <code>docker pull ubuntu</code></p>
 <h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><p>​    <code>docker run -it  -v d:/www:/var/www -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000  ubuntu /bin/bash</code></p>
 <p><code>-v d:/www:/var/www</code>：设置宿主机d:/www与容器ubuntu /var/www 文件绑定共享</p>
-<p>` -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p>
+<p><code>-p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000</code>：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p>
 <p><strong>注意</strong>：因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p>
 <h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>​    重命名新建容器为lnmp</p>
 <p>​    <code>docker container rename [container id] lnmp</code></p>
@@ -473,7 +473,7 @@
 <p>​    因为已经我们之前创建容器时，就已经映射好3306端口，因此无需再配置。</p>
 <p>​    <code>service mysql status</code>：查看mysql服务状态</p>
 <p>​    <code>service mysql start</code>:  开启mysql服务</p>
-<h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="C:\Users\12162\Desktop\blog\navicat.png" alt></p>
+<h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="/images/navicat.png" alt></p>
 <p> 和一般本地数据链接无异。但是这样很可能无法链接。会有报错：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server at &apos;reading initial communication packet&apos;</span><br></pre></td></tr></table></figure>
 <p><strong><em>解决方法</em></strong>: 在容器中找到mysqld.conf配置文件，注释<code>bind_address 127.0.0.1</code>。(请事先安装vim)，</p>
