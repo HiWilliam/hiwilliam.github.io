@@ -103,18 +103,20 @@
 
 
 
-  <meta name="description" content="在我上一篇文章中，写了关于jqGrid追加操作列的方法，今天在项目中发现了一个问题： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,for">
-<meta name="keywords" content="web">
+  <meta name="description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
+<meta name="keywords" content="Docker,开发工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JQGrid 添加操作列(2)">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/web/JQGrid 添加操作列(2)/index.html">
+<meta property="og:title" content="Dokcer学习日志2-搭建lnmp">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/Docker/Dokcer学习日志2-搭建lnmp/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
-<meta property="og:description" content="在我上一篇文章中，写了关于jqGrid追加操作列的方法，今天在项目中发现了一个问题： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,for">
+<meta property="og:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-17T03:24:41.290Z">
+<meta property="og:image" content="http://yoursite.com/images/navicat.png">
+<meta property="og:updated_time" content="2019-07-04T14:02:25.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JQGrid 添加操作列(2)">
-<meta name="twitter:description" content="在我上一篇文章中，写了关于jqGrid追加操作列的方法，今天在项目中发现了一个问题： 12345678//在colModel中添加(记得在colNames中加入&amp;apos;操作&amp;apos;)  &amp;#123;name:&amp;apos;id&amp;apos;,index:&amp;apos;id&amp;apos;,align:&amp;apos;center&amp;apos;,edittype:&amp;apos;button&amp;apos;,for">
+<meta name="twitter:title" content="Dokcer学习日志2-搭建lnmp">
+<meta name="twitter:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
+<meta name="twitter:image" content="http://yoursite.com/images/navicat.png">
 
 
 
@@ -124,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/web/JQGrid 添加操作列(2)/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/30/Docker/Dokcer学习日志2-搭建lnmp/">
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title>JQGrid 添加操作列(2) | Hiwilliam's Blog</title>
+  <title>Dokcer学习日志2-搭建lnmp | Hiwilliam's Blog</title>
   
 
 
@@ -343,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/web/JQGrid 添加操作列(2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/Docker/Dokcer学习日志2-搭建lnmp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hiwilliam">
@@ -360,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JQGrid 添加操作列(2)
+          <h1 class="post-title" itemprop="name headline">Dokcer学习日志2-搭建lnmp
 
               
             
@@ -386,16 +388,46 @@
                 
               
 
-              <time title="创建时间：2019-05-17 09:53:34 / 修改时间：11:24:41" itemprop="dateCreated datePublished" datetime="2019-05-17T09:53:34+08:00">2019-05-17</time>
+              <time title="创建时间：2019-06-30 15:54:41" itemprop="dateCreated datePublished" datetime="2019-06-30T15:54:41+08:00">2019-06-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-04 22:02:25" itemprop="dateModified" datetime="2019-07-04T22:02:25+08:00">2019-07-04</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -432,9 +464,49 @@
       
 
       
-        <p>在我上一篇文章中，写了关于jqGrid追加操作列的方法，今天在项目中发现了一个问题：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;id&apos;,index:&apos;id&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　以上述代码为例，我的实际项目中，我的表格还有双击行弹窗编辑，故我需要传递id值到弹窗层，且要显示双击行的数据，因为我用了layer，所有数据都传过去有点麻烦(我的水平有限)，所以选择传id，通过id来查询相关数据。<br>　　但是我在进行上面操作时发现，我传过去的id值有问题，后来console才知道，id已经变了。我想应该是这里操作列配置有问题。因为这里用了name:’id’,导致return回的值覆盖了原本行数据中id值。<br>console输出：<br>　　id: “<button class="btn btn-danger" onclick="delRow(3)">删除</button>“<br>故只需将name:’id’，改为不存在的字段即可,改动如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在colModel中添加(记得在colNames中加入&apos;操作&apos;)</span><br><span class="line">  &#123;name:&apos;option&apos;,index:&apos;option&apos;,align:&apos;center&apos;,edittype:&apos;button&apos;,formatter:function(cellValue,options,rowData)&#123;  </span><br><span class="line">        //console.log(cellValue);</span><br><span class="line">        //console.log(options);</span><br><span class="line">        //console.log(rowData);</span><br><span class="line">         btnstr=&quot;&lt;button class=&apos;btn btn-danger&apos; onclick=&apos;delRow(&quot;+rowData.id+&quot;)&apos; &gt;删除&lt;/button&gt;&quot;;</span><br><span class="line">         return btnstr</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>console输出：<br>　　id依旧存在且不变<br>　　新增option: “<button class="btn btn-danger" onclick="delRow(3)">删除</button>“<br><em>如有错误不足之处，请多回复指正，不甚言谢</em></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><p>​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。</p>
+<h5 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h5><p>​    默认拉取latest标签的ubuntu镜像</p>
+<p>​    <code>docker pull ubuntu</code></p>
+<h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><p>​    <code>docker run -it  -v d:/www:/var/www -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000  ubuntu /bin/bash</code></p>
+<p><code>-v d:/www:/var/www</code>：设置宿主机d:/www与容器ubuntu /var/www 文件绑定共享</p>
+<p><code>-p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000</code>：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p>
+<p><strong>注意</strong>：因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p>
+<h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>​    重命名新建容器为lnmp</p>
+<p>​    <code>docker container rename [container id] lnmp</code></p>
+<p>​    进入容器</p>
+<p>​    <code>docker exec -it lnmp /bin/bash</code></p>
+<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><h5 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h5><p>​    <code>apt install php7.2</code></p>
+<p>​    以及相关扩展，这里就不再详细写了<a href="https://blog.csdn.net/qq_16885135/article/details/79747045" target="_blank" rel="noopener">扩展链接</a></p>
+<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>​    以下基本与docker无关了，是linux下配置的lnmp的操作流程，这里一并写上。</p>
+<h5 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h5><p>​    安装mysql</p>
+<p>​    <code>apt  update</code></p>
+<p>​    <code>apt install mysql-server</code>    </p>
+<p>​    因为已经我们之前创建容器时，就已经映射好3306端口，因此无需再配置。</p>
+<p>​    <code>service mysql status</code>：查看mysql服务状态</p>
+<p>​    <code>service mysql start</code>:  开启mysql服务</p>
+<h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="/images/navicat.png" alt></p>
+<p> 和一般本地数据链接无异。但是这样很可能无法链接。会有报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server at &apos;reading initial communication packet&apos;</span><br></pre></td></tr></table></figure>
+<p><strong><em>解决方法</em></strong>: 在容器中找到mysqld.conf配置文件，注释<code>bind_address 127.0.0.1</code>。(请事先安装vim)，</p>
+<p>再次尝试链接会报错 ：</p>
+<p><code>Access denied for user &#39;root&#39;@&#39;%</code>类似错误说明是权限问题。</p>
+<p><strong><em>解决方法</em></strong>:进入容器ubuntu中的mysql，输入以下命令</p>
+<p><code>grant all privileges *.* to &#39;root&#39;@&#39;%&#39; by &#39;your password&#39; with grant option;</code></p>
+<p><code>flush privileges;</code></p>
+<p>退出并重启mysql。再次链接成功。(目前我遇到这两个问题)</p>
+<h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><h5 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h5><p>直接从Ubuntu的默认软件仓库中获取即可，与mysql差不多</p>
+<p><code>apt update</code></p>
+<p><code>apt install nginx</code></p>
+<h5 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h5><p>添加nginx虚拟主机(php)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">cp default newhost</span><br><span class="line">vim newhost</span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;                                                                               listen [::]:80;                                                                        	server_name wh.api.com;  </span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ /index.php?$query_string;                                 </span><br><span class="line">		if (!-e $request_filename)&#123;                                                              	rewrite  ^/(.*)$  /index.php?s=/$1  last;      </span><br><span class="line">		&#125;         </span><br><span class="line">	&#125;</span><br><span class="line">	location ~ \.php$ &#123; </span><br><span class="line">		root /www/RestfulApiWithTp5/public;   </span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock; </span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试链接"><a href="#测试链接" class="headerlink" title="测试链接"></a>测试链接</h4><p>​    在主机打开浏览器输入虚拟主机域名。我这里是wh.api.com.。如果出现nginx 欢迎页面说明环境搭建基本ok。</p>
+<p>（可能会是apache的欢迎页面，应该是index.html文件重名了）</p>
+<p>​    如果出现链接失败请自行排除。推荐查看nginx错误日志，同样MySQL也最好看日志来找问题所在</p>
+<p>​    <code>cat /etc/log/mysql/error.log</code>: 查看mysql错误日志</p>
+<p>​    <code>cat /etc/log/nginx/error.log</code>: 查看nginx错误日志</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    至此，我的php web开发环境基本就ok了。当然这期间我耗费不少时间和精力。很多现有的解决方法并不适合自己。只能自己瞎摸索，幸运的是我还是爬出了这个小坑(还有更多的深坑等着我)。</p>
+<p>​    最后调用自己的写的api，并且成功返回数据的那一刻，无疑是充满成就感的，吃了一个桃子奖励自己.:joy:</p>
 
       
     </div>
@@ -458,7 +530,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/开发工具/" rel="tag"><i class="fa fa-tag"></i> 开发工具</a>
           
         </div>
       
@@ -471,14 +545,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/06/29/Docker/Docker学习日志1-基础入门/" rel="next" title="Docker学习日志1-基础入门">
+                <i class="fa fa-chevron-left"></i> Docker学习日志1-基础入门
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/17/web/JQGrid 添加操作列/" rel="prev" title="JQGrid 添加操作列">
-                JQGrid 添加操作列 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/04/Composer学习日志1/" rel="prev" title="Composer学习日志1">
+                Composer学习日志1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -528,8 +606,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -693,6 +780,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ubuntu"><span class="nav-number">2.1.</span> <span class="nav-text">ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#拉取镜像"><span class="nav-number">2.1.1.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建容器"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进入容器"><span class="nav-number">2.1.3.</span> <span class="nav-text">进入容器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP"><span class="nav-number">2.2.</span> <span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装php"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装php</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">2.3.</span> <span class="nav-text">Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装mysql"><span class="nav-number">2.3.1.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#链接mysql"><span class="nav-number">2.3.2.</span> <span class="nav-text">链接mysql</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx"><span class="nav-number">2.4.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装nginx"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置nginx"><span class="nav-number">2.4.2.</span> <span class="nav-text">配置nginx</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试链接"><span class="nav-number">2.5.</span> <span class="nav-text">测试链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -875,7 +979,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/05/17/web/JQGrid 添加操作列(2)/'
+    refer: '2019/06/30/Docker/Dokcer学习日志2-搭建lnmp/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
