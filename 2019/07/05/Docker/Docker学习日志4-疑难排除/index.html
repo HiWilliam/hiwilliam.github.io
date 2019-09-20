@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="一些废话入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。 正文收藏夹api这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和pro">
-<meta name="keywords" content="-php -redis">
+  <meta name="description" content="前言还是折腾了一天的dockerfile，对于之前创建的dockerfile、镜像以及容器不断做出修改。尽量达到我想要的效果。 开始自启脚本​        在原本直接通过run命令创建lnmp环境是，我一直是想实现mysql,nginx.php等服务的开机自启。为此我在网上查找了很多资料。但是很多博客都是千转百转的，原字不动。也不适合自己的问题。因为docke所拉的ubuntu系统好像有点不一样">
+<meta name="keywords" content="Docker,开发工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis初使用">
-<meta property="og:url" content="http://yoursite.com/2019/05/28/experience/redis初使用/index.html">
+<meta property="og:title" content="Docker学习日志4-疑难排除">
+<meta property="og:url" content="http://yoursite.com/2019/07/05/Docker/Docker学习日志4-疑难排除/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
-<meta property="og:description" content="一些废话入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。 正文收藏夹api这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和pro">
+<meta property="og:description" content="前言还是折腾了一天的dockerfile，对于之前创建的dockerfile、镜像以及容器不断做出修改。尽量达到我想要的效果。 开始自启脚本​        在原本直接通过run命令创建lnmp环境是，我一直是想实现mysql,nginx.php等服务的开机自启。为此我在网上查找了很多资料。但是很多博客都是千转百转的，原字不动。也不适合自己的问题。因为docke所拉的ubuntu系统好像有点不一样">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-28T14:24:15.834Z">
+<meta property="og:updated_time" content="2019-07-05T11:03:20.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis初使用">
-<meta name="twitter:description" content="一些废话入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。 正文收藏夹api这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和pro">
+<meta name="twitter:title" content="Docker学习日志4-疑难排除">
+<meta name="twitter:description" content="前言还是折腾了一天的dockerfile，对于之前创建的dockerfile、镜像以及容器不断做出修改。尽量达到我想要的效果。 开始自启脚本​        在原本直接通过run命令创建lnmp环境是，我一直是想实现mysql,nginx.php等服务的开机自启。为此我在网上查找了很多资料。但是很多博客都是千转百转的，原字不动。也不适合自己的问题。因为docke所拉的ubuntu系统好像有点不一样">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/28/experience/redis初使用/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/05/Docker/Docker学习日志4-疑难排除/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>redis初使用 | Hiwilliam's Blog</title>
+  <title>Docker学习日志4-疑难排除 | Hiwilliam's Blog</title>
   
 
 
@@ -343,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/experience/redis初使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/Docker/Docker学习日志4-疑难排除/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hiwilliam">
@@ -360,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis初使用
+          <h1 class="post-title" itemprop="name headline">Docker学习日志4-疑难排除
 
               
             
@@ -386,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-05-28 21:57:38 / 修改时间：22:24:15" itemprop="dateCreated datePublished" datetime="2019-05-28T21:57:38+08:00">2019-05-28</time>
+              <time title="创建时间：2019-07-05 18:04:16 / 修改时间：19:03:20" itemprop="dateCreated datePublished" datetime="2019-07-05T18:04:16+08:00">2019-07-05</time>
             
 
             
@@ -408,7 +408,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目反思/" itemprop="url" rel="index"><span itemprop="name">项目反思</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
 
                 
                 
@@ -450,9 +450,35 @@
       
 
       
-        <h3 id="一些废话"><a href="#一些废话" class="headerlink" title="一些废话"></a>一些废话</h3><p>入职第二天，开始动手写代码。上午简单写了两个接口，分别时添加到收藏夹和删除收藏夹的商品，下午简单学习了redis和消息队列相关知识，照项目里面已经写好的redis部分，照葫芦画瓢。想学会模仿，才能学会怎么用，再到理解。</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="收藏夹api"><a href="#收藏夹api" class="headerlink" title="收藏夹api"></a>收藏夹api</h4><p>这个接口其实没什么难度，就是基本的增删改查，只是业务逻辑上要简单考虑下，例如添加商品到收藏夹，体现在数据库上则是收藏夹表，添加一条带有user_id和product_id的记录。在这个项目里面它的表还带有一个自增id。在考虑不能重复收藏的时，一开始同事让我试试组合唯一索引。通过这种方式来自动实现收藏表中的user_id和product_id的组合唯一不重复的。但是后来考虑到另外一个list(当前用户所有收藏的商品)接口,会使用到user_id字段，从而使得这个组合唯一索引失效，因而放弃(这里留个问号，等实践去验证)。<br>代替上面索引的方法就是先判断数据库有没有这条收藏记录，如果有则添加失败。</p>
-<h4 id="历史足迹api"><a href="#历史足迹api" class="headerlink" title="历史足迹api"></a>历史足迹api</h4><p>下午开始写浏览商品足迹的api，还是基本的增，删，查操作。但是考虑到高并发下，采用redis实现消息队列异步的插入数据，即在将数据插入redis的list中，在通过循环不断的取出队中的数据，存入数据库，如果队列为空则睡眠一段时间，再继续循环获取(待完善)。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>还是折腾了一天的dockerfile，对于之前创建的dockerfile、镜像以及容器不断做出修改。尽量达到我想要的效果。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="自启脚本"><a href="#自启脚本" class="headerlink" title="自启脚本"></a>自启脚本</h4><p>​        在原本直接通过run命令创建lnmp环境是，我一直是想实现mysql,nginx.php等服务的开机自启。为此我在网上查找了很多资料。但是很多博客都是千转百转的，原字不动。也不适合自己的问题。因为docke所拉的ubuntu系统好像有点不一样。很多命令都没有(自身技术也有限)，实验了很久都没成功。但是dockerfile熟悉并上手后，我开始寻找这种方式解决自启服务的办法。那就是利用CPOY命令，直接在容器中运行脚本。实现过程如下：</p>
+<ol>
+<li>首先创建脚本文件mystart.sh</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">set</span> -e  <span class="comment">#执行出错，立即停止</span></span><br><span class="line">/usr/sbin/php-fpm7.2 <span class="comment">#开启php-fpm</span></span><br><span class="line">service mysql start  <span class="comment">#开启mysql</span></span><br><span class="line">service nginx start <span class="comment">#开启nginx</span></span><br><span class="line">/bin/bash <span class="comment">#保留一个进程running,防止容器退出</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:在windows下，写shell脚本请注意行尾序列改为LF，否则无法正常运行</p>
+<p>写好的脚本用COPY命令直接引进dockerfile文件中,如下:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解决php服务启动 unable to bind listening socket for address '/run/php/php7.2-fpm.sock'错误</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> mkdir /var/run/php</span></span><br><span class="line"><span class="comment"># COPY [本地shell脚本位置] [容器存放脚本的路径]</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> ./mystart.sh  /usr/bin/mystart.sh</span></span><br><span class="line"><span class="comment"># 添加脚本可执行权限</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> chmod +x /usr/bin/mystart.sh</span></span><br><span class="line"><span class="comment"># 解决MySQL服务启动 user dont have this option</span></span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> [<span class="string">"/var/lib/mysql"</span>] </span></span><br><span class="line"><span class="comment"># 执行脚本</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">"/usr/bin/mystart.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>以上是我经过多次测试后的，所遇到问题并改写的。备注已解释了每行的意思。其中关于解决php和mysql服务启动的方法也是我在遇到相应问题后查找资料所得。</p>
+<h4 id="自动重启"><a href="#自动重启" class="headerlink" title="自动重启"></a>自动重启</h4><p>​        因为我是想将所创建的lnmp容器作为本地开发的服务器，为了方便，希望可以是实现自动重启。这里就运用了docker的 <strong>重启策略(–restart)</strong>:        </p>
+<ol>
+<li><p>no:无重启策略，容器退出后不重启(默认)</p>
+</li>
+<li><p>always: 容器退后总是重启</p>
+</li>
+<li><p>on-failure(on-failure:3):容器非正常退出时,(状态非0时)重启，括号里面的意思是最多重启三次</p>
+</li>
+<li><p>unless-stopped:容器推出后总是重启，除非时daemon进程启动容器就停止的(应该是无运行中进程，容器自动退出的情况)</p>
+<p>如果容器已经运行可以通过<code>docker update --restart=[策略类型] [容器id]</code>修改</p>
+<h4 id="踩坑问题"><a href="#踩坑问题" class="headerlink" title="踩坑问题"></a>踩坑问题</h4><p>​    在我测试自动重启过程中，我发现容器总是最多运行30s，就会自动关闭，又进入重启状态。于是我在容器开启状态下进入容器检查要自启服务的状态，发现mysql(我遇到的是mysql)是stopped,也就是说是我的mysql</p>
+<p>启动失败。于是查看错误日志，发现<code>Another process with pid 394 is using unix socket file.</code></p>
+<p>网上搜索得知是sock的文件已经存在。删除即可<code>rm  /var/run/mysqld/sock文件</code>。至于为什么会出先这种情况。我猜测是我没有正常退出容器导致sock存在的缘故。</p>
+<p>​    至于容器故障排查可以用<code>docker logs [容器id]</code>来查看</p>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    不停的折腾，问题是一个接着一个。坎坷的学习之路。</p>
 
       
     </div>
@@ -476,7 +502,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php-redis/" rel="tag"><i class="fa fa-tag"></i> -php -redis</a>
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/开发工具/" rel="tag"><i class="fa fa-tag"></i> 开发工具</a>
           
         </div>
       
@@ -489,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/27/php基础知识查漏补缺/" rel="next" title="php基础知识查漏补缺">
-                <i class="fa fa-chevron-left"></i> php基础知识查漏补缺
+              <a href="/2019/07/04/Docker/Docker学习日志3-Dockerfile/" rel="next" title="Docker学习日志3-Dockerfile">
+                <i class="fa fa-chevron-left"></i> Docker学习日志3-Dockerfile
               </a>
             
           </div>
@@ -499,8 +527,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/29/redis基础认知/" rel="prev" title="redis基础认知">
-                redis基础认知 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/20/Docker/Laradock使用/" rel="prev" title="Laradock使用">
+                Laradock使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -577,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -602,7 +630,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -645,7 +677,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -727,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些废话"><span class="nav-number">1.</span> <span class="nav-text">一些废话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#收藏夹api"><span class="nav-number">2.1.</span> <span class="nav-text">收藏夹api</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#历史足迹api"><span class="nav-number">2.2.</span> <span class="nav-text">历史足迹api</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自启脚本"><span class="nav-number">2.1.</span> <span class="nav-text">自启脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动重启"><span class="nav-number">2.2.</span> <span class="nav-text">自动重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#踩坑问题"><span class="nav-number">2.3.</span> <span class="nav-text">踩坑问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -760,7 +802,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
@@ -915,7 +957,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/05/28/experience/redis初使用/'
+    refer: '2019/07/05/Docker/Docker学习日志4-疑难排除/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

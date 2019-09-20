@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作 实际操作中，链接应该ok，应为有密码输入的消息返回，输入">
+  <meta name="description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现 12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作  实际操作中，链接应该ok，应为有密码输入的消息返回，">
 <meta name="keywords" content="questions,git,scp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scp -t错误">
 <meta property="og:url" content="http://yoursite.com/2019/05/22/questions/scp-t错误/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
-<meta property="og:description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作 实际操作中，链接应该ok，应为有密码输入的消息返回，输入">
+<meta property="og:description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现 12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作  实际操作中，链接应该ok，应为有密码输入的消息返回，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-22T15:24:28.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scp -t错误">
-<meta name="twitter:description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作 实际操作中，链接应该ok，应为有密码输入的消息返回，输入">
+<meta name="twitter:description" content="预期目的这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。 问题描述在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现 12scp id_rsa.pub git@192.168.2.102:/home/git/.ssh //本地.ssh 目录下操作  实际操作中，链接应该ok，应为有密码输入的消息返回，">
 
 
 
@@ -451,8 +451,12 @@
 
       
         <h3 id="预期目的"><a href="#预期目的" class="headerlink" title="预期目的"></a>预期目的</h3><p>这几天在重拾git操作，尝试着在我的ubuntu笔记本上建立一个git仓库。</p>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp id_rsa.pub git@192.168.2.102:/home/git/.ssh </span><br><span class="line">//本地.ssh 目录下操作</span><br></pre></td></tr></table></figure></p>
-<p>实际操作中，链接应该ok，应为有密码输入的消息返回，输入用户密码后却返回错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fatal: unrecognized command &apos;scp -t /home/git/.ssh&apos;</span><br><span class="line">lost connection</span><br></pre></td></tr></table></figure></p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在实际操作中，通过查阅资料得知需要将id_rsa.pub 传递到Ubuntu笔记本上，网上给的建议是通过scp命令来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp id_rsa.pub git@192.168.2.102:/home/git/.ssh </span><br><span class="line">//本地.ssh 目录下操作</span><br></pre></td></tr></table></figure>
+
+<p>实际操作中，链接应该ok，应为有密码输入的消息返回，输入用户密码后却返回错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fatal: unrecognized command &apos;scp -t /home/git/.ssh&apos;</span><br><span class="line">lost connection</span><br></pre></td></tr></table></figure>
+
 <p>查找资料后，发现scp并没有-t选项，但是我在命令里面也没有写-t选项啊。至此问题停留在这儿。希望有遇到朋友或者知晓大佬解惑。不甚言谢。</p>
 <h3 id="问题状态"><a href="#问题状态" class="headerlink" title="问题状态"></a>问题状态</h3><p>未解决</p>
 
@@ -505,7 +509,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/27/php基础知识查漏补缺/" rel="prev" title="php基础知识查漏补缺">
+              <a href="/2019/05/27/PHP/php基础知识查漏补缺/" rel="prev" title="php基础知识查漏补缺">
                 php基础知识查漏补缺 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -583,7 +587,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -610,7 +614,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -659,7 +665,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -774,7 +784,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

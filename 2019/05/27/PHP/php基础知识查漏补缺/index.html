@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -103,20 +103,18 @@
 
 
 
-  <meta name="description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
-<meta name="keywords" content="开发工具,Docker">
+  <meta name="description" content="一些废话入职第一天，先熟悉下环境，了解下状况。搭配好开发环境后，没有立即开始敲代码，而是在同事指导下看起项目代码，毕竟新人刚进来，直接动代码有点不靠谱。虽然有点静不下心，但多少有点收获。 正文技巧​        变量名最好见文生意 避免深层判断，尽早返回list方法这是php自带的方法，但是我在看项目代码时，一直不明白，以为是自定义的方法。这也说明了自己的php基础还是非常弱的。函数将数组的值赋">
+<meta name="keywords" content="php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dokcer(2) 搭建lnmp">
-<meta property="og:url" content="http://yoursite.com/2019/06/30/Tools/Dokcer-2-搭建lnmp/index.html">
+<meta property="og:title" content="php基础知识查漏补缺">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/PHP/php基础知识查漏补缺/index.html">
 <meta property="og:site_name" content="Hiwilliam&#39;s Blog">
-<meta property="og:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
+<meta property="og:description" content="一些废话入职第一天，先熟悉下环境，了解下状况。搭配好开发环境后，没有立即开始敲代码，而是在同事指导下看起项目代码，毕竟新人刚进来，直接动代码有点不靠谱。虽然有点静不下心，但多少有点收获。 正文技巧​        变量名最好见文生意 避免深层判断，尽早返回list方法这是php自带的方法，但是我在看项目代码时，一直不明白，以为是自定义的方法。这也说明了自己的php基础还是非常弱的。函数将数组的值赋">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/navicat.png">
-<meta property="og:updated_time" content="2019-06-30T10:23:54.188Z">
+<meta property="og:updated_time" content="2019-07-11T14:48:52.788Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dokcer(2) 搭建lnmp">
-<meta name="twitter:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
-<meta name="twitter:image" content="http://yoursite.com/images/navicat.png">
+<meta name="twitter:title" content="php基础知识查漏补缺">
+<meta name="twitter:description" content="一些废话入职第一天，先熟悉下环境，了解下状况。搭配好开发环境后，没有立即开始敲代码，而是在同事指导下看起项目代码，毕竟新人刚进来，直接动代码有点不靠谱。虽然有点静不下心，但多少有点收获。 正文技巧​        变量名最好见文生意 避免深层判断，尽早返回list方法这是php自带的方法，但是我在看项目代码时，一直不明白，以为是自定义的方法。这也说明了自己的php基础还是非常弱的。函数将数组的值赋">
 
 
 
@@ -126,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/30/Tools/Dokcer-2-搭建lnmp/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/PHP/php基础知识查漏补缺/">
 
 
 
@@ -136,7 +134,7 @@
   };
 </script>
 
-  <title>Dokcer(2) 搭建lnmp | Hiwilliam's Blog</title>
+  <title>php基础知识查漏补缺 | Hiwilliam's Blog</title>
   
 
 
@@ -345,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/Tools/Dokcer-2-搭建lnmp/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/PHP/php基础知识查漏补缺/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hiwilliam">
@@ -362,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Dokcer(2) 搭建lnmp
+          <h1 class="post-title" itemprop="name headline">php基础知识查漏补缺
 
               
             
@@ -388,12 +386,24 @@
                 
               
 
-              <time title="创建时间：2019-06-30 15:54:41 / 修改时间：18:23:54" itemprop="dateCreated datePublished" datetime="2019-06-30T15:54:41+08:00">2019-06-30</time>
+              <time title="创建时间：2019-05-27 20:44:24" itemprop="dateCreated datePublished" datetime="2019-05-27T20:44:24+08:00">2019-05-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-11 22:48:52" itemprop="dateModified" datetime="2019-07-11T22:48:52+08:00">2019-07-11</time>
               
             
           </span>
@@ -410,7 +420,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
 
                 
                 
@@ -452,49 +462,34 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><p>​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。</p>
-<h5 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h5><p>​    默认拉取latest标签的ubuntu镜像</p>
-<p>​    <code>docker pull ubuntu</code></p>
-<h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><p>​    <code>docker run -it  -v d:/www:/var/www -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000  ubuntu /bin/bash</code></p>
-<p><code>-v d:/www:/var/www</code>：设置宿主机d:/www与容器ubuntu /var/www 文件绑定共享</p>
-<p><code>-p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000</code>：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p>
-<p><strong>注意</strong>：因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p>
-<h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>​    重命名新建容器为lnmp</p>
-<p>​    <code>docker container rename [container id] lnmp</code></p>
-<p>​    进入容器</p>
-<p>​    <code>docker exec -it lnmp /bin/bash</code></p>
-<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><h5 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h5><p>​    <code>apt install php7.2</code></p>
-<p>​    以及相关扩展，这里就不再详细写了<a href="https://blog.csdn.net/qq_16885135/article/details/79747045" target="_blank" rel="noopener">扩展链接</a></p>
-<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>​    以下基本与docker无关了，是linux下配置的lnmp的操作流程，这里一并写上。</p>
-<h5 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h5><p>​    安装mysql</p>
-<p>​    <code>apt  update</code></p>
-<p>​    <code>apt install mysql-server</code>    </p>
-<p>​    因为已经我们之前创建容器时，就已经映射好3306端口，因此无需再配置。</p>
-<p>​    <code>service mysql status</code>：查看mysql服务状态</p>
-<p>​    <code>service mysql start</code>:  开启mysql服务</p>
-<h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="/images/navicat.png" alt></p>
-<p> 和一般本地数据链接无异。但是这样很可能无法链接。会有报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server at &apos;reading initial communication packet&apos;</span><br></pre></td></tr></table></figure>
-<p><strong><em>解决方法</em></strong>: 在容器中找到mysqld.conf配置文件，注释<code>bind_address 127.0.0.1</code>。(请事先安装vim)，</p>
-<p>再次尝试链接会报错 ：</p>
-<p><code>Access denied for user &#39;root&#39;@&#39;%</code>类似错误说明是权限问题。</p>
-<p><strong><em>解决方法</em></strong>:进入容器ubuntu中的mysql，输入以下命令</p>
-<p><code>grant all privileges *.* to &#39;root&#39;@&#39;%&#39; by &#39;your password&#39; with grant option;</code></p>
-<p><code>flush privileges;</code></p>
-<p>退出并重启mysql。再次链接成功。(目前我遇到这两个问题)</p>
-<h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><h5 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h5><p>直接从Ubuntu的默认软件仓库中获取即可，与mysql差不多</p>
-<p><code>apt update</code></p>
-<p><code>apt install nginx</code></p>
-<h5 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h5><p>添加nginx虚拟主机(php)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">cp default newhost</span><br><span class="line">vim newhost</span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;                                                                               listen [::]:80;                                                                        	server_name wh.api.com;  </span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ /index.php?$query_string;                                 </span><br><span class="line">		if (!-e $request_filename)&#123;                                                              	rewrite  ^/(.*)$  /index.php?s=/$1  last;      </span><br><span class="line">		&#125;         </span><br><span class="line">	&#125;</span><br><span class="line">	location ~ \.php$ &#123; </span><br><span class="line">		root /www/RestfulApiWithTp5/public;   </span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock; </span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="测试链接"><a href="#测试链接" class="headerlink" title="测试链接"></a>测试链接</h4><p>​    在主机打开浏览器输入虚拟主机域名。我这里是wh.api.com.。如果出现nginx 欢迎页面说明环境搭建基本ok。</p>
-<p>（可能会是apache的欢迎页面，应该是index.html文件重名了）</p>
-<p>​    如果出现链接失败请自行排除。推荐查看nginx错误日志，同样MySQL也最好看日志来找问题所在</p>
-<p>​    <code>cat /etc/log/mysql/error.log</code>: 查看mysql错误日志</p>
-<p>​    <code>cat /etc/log/nginx/error.log</code>: 查看nginx错误日志</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    至此，我的php web开发环境基本就ok了。当然这期间我耗费不少时间和精力。很多现有的解决方法并不适合自己。只能自己瞎摸索，幸运的是我还是爬出了这个小坑(还有更多的深坑等着我)。</p>
-<p>​    最后调用自己的写的api，并且成功返回数据的那一刻，无疑是充满成就感的，吃了一个桃子奖励自己.:joy:</p>
+        <h4 id="一些废话"><a href="#一些废话" class="headerlink" title="一些废话"></a>一些废话</h4><p>入职第一天，先熟悉下环境，了解下状况。搭配好开发环境后，没有立即开始敲代码，而是在同事指导下看起项目代码，毕竟新人刚进来，直接动代码有点不靠谱。虽然有点静不下心，但多少有点收获。</p>
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><p>​        变量名最好见文生意</p>
+<h5 id="避免深层判断，尽早返回"><a href="#避免深层判断，尽早返回" class="headerlink" title="避免深层判断，尽早返回"></a>避免深层判断，尽早返回</h5><h3 id="list方法"><a href="#list方法" class="headerlink" title="list方法"></a>list方法</h3><p>这是php自带的方法，但是我在看项目代码时，一直不明白，以为是自定义的方法。这也说明了自己的php基础还是非常弱的。<br>函数将数组的值赋值给参数,用法如下：<br><code>list($param1,$params2,..) = $array(1,2,3) //注意php5中赋值顺序为从右想左，php7中为从左向右</code></p>
+<h3 id="trait"><a href="#trait" class="headerlink" title="trait"></a>trait</h3><p>关键词，类似class，但是无法实例化，其实是一种代码服用技术，为php单继承机制提供了灵活的复用机制，通过use(类中)来引用，且引用了trait的方法的优先级比普通继承的父类方法要高。<br>今天看代码时，很多接口控制器都没有增删改查的方法，但是路由都可用，一开始没整明白，直到旁边同事点明，才知晓。还是基础不扎实的缘故。</p>
+<h4 id="getcwd"><a href="#getcwd" class="headerlink" title="getcwd"></a>getcwd</h4><p>​    <strong>获取当前工作路径</strong></p>
+<p>​    注意：这里的工作路径是指代码运行的路径。例如</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/test/test/test.php:</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getPath</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	 	<span class="keyword">echo</span> getcwd();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/test/index.php:</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require_once</span> <span class="string">"./test/test.php"</span>;</span><br><span class="line">Test::getPath();</span><br></pre></td></tr></table></figure>
+
+<p>这里输出的是/test.即index.php所处的目录</p>
+<h4 id="dirname"><a href="#dirname" class="headerlink" title="dirname"></a>dirname</h4><p>​    参数是String的路径</p>
+<p>​    默认返回当前目录，有参时返回参数路径的父目录，如果参数不含有“/”,则返回”.”</p>
+<h4 id="self与this"><a href="#self与this" class="headerlink" title="self与this"></a>self与this</h4><ol>
+<li><p>self代表了当前类，this代表这当前类的实例，即对象。</p>
+</li>
+<li><p>在当前类的静态方法中是无法调用非静态属性，应为非静态属性时类实例化后的,存放在对象中。</p>
+</li>
+<li><p>在当前类的静态方法中可以调用当前类的非静态方法，即通过self::调用，非静态方法会自动转化为静态方法</p>
+</li>
+</ol>
+<h4 id="魔术变量"><a href="#魔术变量" class="headerlink" title="魔术变量"></a>魔术变量</h4><p>​    </p>
+<h4 id="strpos"><a href="#strpos" class="headerlink" title="strpos"></a>strpos</h4><p>​    <code>strpos(String $haystack, mix $needle [, int $offset = 0]) : int</code></p>
+<p>返回needle在haystack出现的位置，当有offset参数时，从offset处开始计算，offset为负时，从尾部开始</p>
+<p>return值为needle首次出现的位置。</p>
+<p><strong><em>当haystack不存在needle字符时返回false，但是要用全等“===”来判断</em></strong> </p>
+<h4 id="ksort"><a href="#ksort" class="headerlink" title="ksort"></a>ksort</h4><p>​    数组按照键名重新排序</p>
+<p>​    @return boolean</p>
 
       
     </div>
@@ -518,9 +513,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开发工具/" rel="tag"><i class="fa fa-tag"></i> 开发工具</a>
-          
-            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
           
         </div>
       
@@ -533,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/29/Tools/Docker(1)/" rel="next" title="Docker简介以及基本命令">
-                <i class="fa fa-chevron-left"></i> Docker简介以及基本命令
+              <a href="/2019/05/22/questions/scp-t错误/" rel="next" title="scp -t错误">
+                <i class="fa fa-chevron-left"></i> scp -t错误
               </a>
             
           </div>
@@ -542,6 +535,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/28/Experience/项目总结一-redis初使用/" rel="prev" title="项目总结一-redis初使用">
+                项目总结一-redis初使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -617,7 +614,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -644,7 +641,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -691,7 +690,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -773,7 +778,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ubuntu"><span class="nav-number">2.1.</span> <span class="nav-text">ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#拉取镜像"><span class="nav-number">2.1.1.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建容器"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进入容器"><span class="nav-number">2.1.3.</span> <span class="nav-text">进入容器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP"><span class="nav-number">2.2.</span> <span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装php"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装php</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">2.3.</span> <span class="nav-text">Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装mysql"><span class="nav-number">2.3.1.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#链接mysql"><span class="nav-number">2.3.2.</span> <span class="nav-text">链接mysql</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx"><span class="nav-number">2.4.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装nginx"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置nginx"><span class="nav-number">2.4.2.</span> <span class="nav-text">配置nginx</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试链接"><span class="nav-number">2.5.</span> <span class="nav-text">测试链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一些废话"><span class="nav-number">1.</span> <span class="nav-text">一些废话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技巧"><span class="nav-number">3.</span> <span class="nav-text">技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#避免深层判断，尽早返回"><span class="nav-number">3.1.</span> <span class="nav-text">避免深层判断，尽早返回</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#list方法"><span class="nav-number"></span> <span class="nav-text">list方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trait"><span class="nav-number"></span> <span class="nav-text">trait</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getcwd"><span class="nav-number">1.</span> <span class="nav-text">getcwd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dirname"><span class="nav-number">2.</span> <span class="nav-text">dirname</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#self与this"><span class="nav-number">3.</span> <span class="nav-text">self与this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#魔术变量"><span class="nav-number">4.</span> <span class="nav-text">魔术变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strpos"><span class="nav-number">5.</span> <span class="nav-text">strpos</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ksort"><span class="nav-number">6.</span> <span class="nav-text">ksort</span></a></li></ol></li></div>
             
 
           </div>
@@ -806,7 +811,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
@@ -961,7 +966,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/06/30/Tools/Dokcer-2-搭建lnmp/'
+    refer: '2019/05/27/PHP/php基础知识查漏补缺/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

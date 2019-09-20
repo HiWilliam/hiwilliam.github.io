@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -451,13 +451,21 @@
 
       
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>自从接触web开发以来，一直是在apache环境下进行开发的，最近看了很多面试要求，都有涉及到nginx，所以简单的尝试一下。</p>
-<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>开始安装前，需要下载安装包，不过在linux下直接通过wget来下载好了。打开<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx官网</a>,其中分为三个版本<br><strong>Mainline versions</strong>:主干版本，也就是开发版本<br><strong>Stable versions</strong>:稳定版本<br><strong>Legacy versions</strong>：历史版本<br>我选择了<a href="http://nginx.org/download/nginx-1.16.0.tar.gz" target="_blank" rel="noopener">Stable versions</a>(这里是1.16.0)，右键复制下载链接,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.16.0.tar.gz //开始下载</span><br><span class="line"></span><br><span class="line">tar -xzvf nginx-1.16.0.tar.gz  //解压</span><br></pre></td></tr></table></figure></p>
-<p>随后开始编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nigx //配置 这里的路径是设置nginx安装的路径</span><br><span class="line"></span><br><span class="line">make //开始编译(报错请看下面注意事项)</span><br><span class="line"></span><br><span class="line">make install //开始安装</span><br></pre></td></tr></table></figure></p>
-<p>进行到这一步，不出意外的话，基本安装完成。开始测试,此时如果直接按照nginx命令可能会报错<br><code>nginx command not found</code><br>这是因为nginx命令还未配置，只能在安装目录/usr/local/nginx/sbin下执行，和windows下环境变量差不多。所以需要修改<code>vim /etc/profile</code>,在文件的<strong>最后</strong>添加如下配置然后执行<code>source /etc/profile</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:/usr/local/nginx/sbin</span><br><span class="line">export PAHT</span><br><span class="line">//保存退出</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>开始安装前，需要下载安装包，不过在linux下直接通过wget来下载好了。打开<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx官网</a>,其中分为三个版本<br><strong>Mainline versions</strong>:主干版本，也就是开发版本<br><strong>Stable versions</strong>:稳定版本<br><strong>Legacy versions</strong>：历史版本<br>我选择了<a href="http://nginx.org/download/nginx-1.16.0.tar.gz" target="_blank" rel="noopener">Stable versions</a>(这里是1.16.0)，右键复制下载链接,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.16.0.tar.gz //开始下载</span><br><span class="line"></span><br><span class="line">tar -xzvf nginx-1.16.0.tar.gz  //解压</span><br></pre></td></tr></table></figure>
+
+<p>随后开始编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nigx //配置 这里的路径是设置nginx安装的路径</span><br><span class="line"></span><br><span class="line">make //开始编译(报错请看下面注意事项)</span><br><span class="line"></span><br><span class="line">make install //开始安装</span><br></pre></td></tr></table></figure>
+
+<p>进行到这一步，不出意外的话，基本安装完成。开始测试,此时如果直接按照nginx命令可能会报错<br><code>nginx command not found</code><br>这是因为nginx命令还未配置，只能在安装目录/usr/local/nginx/sbin下执行，和windows下环境变量差不多。所以需要修改<code>vim /etc/profile</code>,在文件的<strong>最后</strong>添加如下配置然后执行<code>source /etc/profile</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:/usr/local/nginx/sbin</span><br><span class="line">export PAHT</span><br><span class="line">//保存退出</span><br></pre></td></tr></table></figure>
+
 <p>这样就可以将nginx命令配置到系统中，全局使用。然后开启服务<code>nginx</code>。</p>
 <h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>上面的流程是出现大问题下，安装一步到位的。但实际过程中，我还是遇到了很多问题。对于新手的我也是耗费了不少时间和精力</p>
 <h4 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h4><p>在上面make时很可能会出现<br><code>make: *** No rule to make target</code>build’, needed by <code>default&#39;. Stop.</code><br>这很可能就是依赖缺失的原因。这里直接给出网上的<a href="https://www.cnblogs.com/zrbfree/p/6419043.html" target="_blank" rel="noopener">解决方法</a>，最好直接安装所有的依赖，避免多次操作。<br>安装完成后成需要删除上部操作configure的中间文件,也就是解压后文件目录下的objs文件，然后重新configure，再继续安装操作。</p>
-<h5 id="reload报错"><a href="#reload报错" class="headerlink" title="reload报错"></a>reload报错</h5><p>当执行<code>nginx -s reload</code>报错 <code>&quot;/usr/local/nginx/logs/nginx.pid&quot; failed (2: No such file or directory)</code>时，莫慌，这是因为你的nginx根本就没启动，何来重启一说。<br>因为reload 操作其实并非简单的关闭服务，再开启服务。具体如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. Nginx的master进程检查配置文件的正确性，若是错误则返回错误信息，nginx继续采用原配置文件进行工作（因为worker未受到影响）</span><br><span class="line"></span><br><span class="line">2. Nginx启动新的worker进程，采用新的配置文件</span><br><span class="line"></span><br><span class="line">3. Nginx将新的请求分配新的worker进程</span><br><span class="line"></span><br><span class="line">4. Nginx等待以前的worker进程的全部请求已经都返回后，关闭相关worker进程</span><br><span class="line"></span><br><span class="line">5. 重复上面过程，知道全部旧的worker进程都被关闭掉。</span><br></pre></td></tr></table></figure></p>
+<h5 id="reload报错"><a href="#reload报错" class="headerlink" title="reload报错"></a>reload报错</h5><p>当执行<code>nginx -s reload</code>报错 <code>&quot;/usr/local/nginx/logs/nginx.pid&quot; failed (2: No such file or directory)</code>时，莫慌，这是因为你的nginx根本就没启动，何来重启一说。<br>因为reload 操作其实并非简单的关闭服务，再开启服务。具体如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. Nginx的master进程检查配置文件的正确性，若是错误则返回错误信息，nginx继续采用原配置文件进行工作（因为worker未受到影响）</span><br><span class="line"></span><br><span class="line">2. Nginx启动新的worker进程，采用新的配置文件</span><br><span class="line"></span><br><span class="line">3. Nginx将新的请求分配新的worker进程</span><br><span class="line"></span><br><span class="line">4. Nginx等待以前的worker进程的全部请求已经都返回后，关闭相关worker进程</span><br><span class="line"></span><br><span class="line">5. 重复上面过程，知道全部旧的worker进程都被关闭掉。</span><br></pre></td></tr></table></figure>
+
 <p>所以，重启之后，master的进程号不变，worker的进程号会改变。所以直接reload会找不到pid文件。只需要开启服务即可。</p>
 
       
@@ -585,7 +593,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -612,7 +620,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -661,7 +671,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -776,7 +790,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

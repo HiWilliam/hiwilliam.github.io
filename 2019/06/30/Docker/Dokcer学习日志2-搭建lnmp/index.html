@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -112,7 +112,7 @@
 <meta property="og:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/navicat.png">
-<meta property="og:updated_time" content="2019-07-04T14:02:25.228Z">
+<meta property="og:updated_time" content="2019-07-05T07:59:03.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dokcer学习日志2-搭建lnmp">
 <meta name="twitter:description" content="前言​    前面介绍了docker基本概念和基本的入门操作命令。那么今天就开始尝试这搭建web开发环境。不管好不好用，尝试了才有资格评价。 开始ubuntu​    我个人最喜欢的Linux发行版是Ubuntu，也掌握了一些命令。所以就不再折腾Centos了,反正换汤不换药。 拉取镜像​    默认拉取latest标签的ubuntu镜像 ​    docker pull ubuntu 创建容器​">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-04 22:02:25" itemprop="dateModified" datetime="2019-07-04T22:02:25+08:00">2019-07-04</time>
+                <time title="修改时间：2019-07-05 15:59:03" itemprop="dateModified" datetime="2019-07-05T15:59:03+08:00">2019-07-05</time>
               
             
           </span>
@@ -471,7 +471,11 @@
 <h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><p>​    <code>docker run -it  -v d:/www:/var/www -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000  ubuntu /bin/bash</code></p>
 <p><code>-v d:/www:/var/www</code>：设置宿主机d:/www与容器ubuntu /var/www 文件绑定共享</p>
 <p><code>-p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000</code>：映射宿主机的80，3306，9000端口到容器的80，3306，9000端口</p>
-<p><strong>注意</strong>：因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p>
+<p><strong>注意</strong>：</p>
+<p>​    因为容器创建后再给容器绑定共享文件、和映射端口，这里就直接在创建的时候就做好准备。</p>
+<p>​    注意这里的参数顺序最好不要改。在几次创建容器过程中，我改变顺序都无法正常使用。而且还难以发现原因。例如</p>
+<p><code>docker run -it  -v d:/www:/var/www ubuntu -p 127.0.0.1:80:80 -p 127.0.0.1:3306:3306 -p 127.0.0.1:9000:9000   /bin/bash</code></p>
+<p>这样写可能导致端口无法正常被映射(这个坑了我好久)。</p>
 <h5 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h5><p>​    重命名新建容器为lnmp</p>
 <p>​    <code>docker container rename [container id] lnmp</code></p>
 <p>​    进入容器</p>
@@ -488,18 +492,20 @@
 <h5 id="链接mysql"><a href="#链接mysql" class="headerlink" title="链接mysql"></a>链接mysql</h5><p>​    在宿主机打开数据库图形管理软件(我的是navicate)，新建链接。<img src="/images/navicat.png" alt></p>
 <p> 和一般本地数据链接无异。但是这样很可能无法链接。会有报错：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server at &apos;reading initial communication packet&apos;</span><br></pre></td></tr></table></figure>
+
 <p><strong><em>解决方法</em></strong>: 在容器中找到mysqld.conf配置文件，注释<code>bind_address 127.0.0.1</code>。(请事先安装vim)，</p>
 <p>再次尝试链接会报错 ：</p>
 <p><code>Access denied for user &#39;root&#39;@&#39;%</code>类似错误说明是权限问题。</p>
 <p><strong><em>解决方法</em></strong>:进入容器ubuntu中的mysql，输入以下命令</p>
-<p><code>grant all privileges *.* to &#39;root&#39;@&#39;%&#39; by &#39;your password&#39; with grant option;</code></p>
+<p><code>grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &quot;password&quot; with grant option;</code></p>
 <p><code>flush privileges;</code></p>
 <p>退出并重启mysql。再次链接成功。(目前我遇到这两个问题)</p>
 <h4 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h4><h5 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h5><p>直接从Ubuntu的默认软件仓库中获取即可，与mysql差不多</p>
 <p><code>apt update</code></p>
 <p><code>apt install nginx</code></p>
 <h5 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h5><p>添加nginx虚拟主机(php)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/sites-available</span><br><span class="line">cp default newhost</span><br><span class="line">vim newhost</span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;                                                                               listen [::]:80;                                                                        	server_name wh.api.com;  </span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ /index.php?$query_string;                                 </span><br><span class="line">		if (!-e $request_filename)&#123;                                                              	rewrite  ^/(.*)$  /index.php?s=/$1  last;      </span><br><span class="line">		&#125;         </span><br><span class="line">	&#125;</span><br><span class="line">	location ~ \.php$ &#123; </span><br><span class="line">		root /www/RestfulApiWithTp5/public;   </span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock; </span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span> /etc/nginx/sites-available</span><br><span class="line">cp default newhost</span><br><span class="line">vim newhost</span><br><span class="line">server &#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">80</span>;                                                                               <span class="attribute">listen</span> [::]:<span class="number">80</span>;                                                                        	<span class="attribute">server_name</span> your server name ;  </span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;                                 </span><br><span class="line">		<span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>)&#123;                                                              	<span class="attribute">rewrite</span> <span class="regexp"> ^/(.*)$</span>  /index.php?s=/<span class="variable">$1</span>  <span class="literal">last</span>;      </span><br><span class="line">		&#125;         </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;   </span><br><span class="line">	    <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">        <span class="attribute">fastcgi_pass</span> unix:/var/run/php/php7.2-fpm.sock; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="测试链接"><a href="#测试链接" class="headerlink" title="测试链接"></a>测试链接</h4><p>​    在主机打开浏览器输入虚拟主机域名。我这里是wh.api.com.。如果出现nginx 欢迎页面说明环境搭建基本ok。</p>
 <p>（可能会是apache的欢迎页面，应该是index.html文件重名了）</p>
 <p>​    如果出现链接失败请自行排除。推荐查看nginx错误日志，同样MySQL也最好看日志来找问题所在</p>
@@ -555,8 +561,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/04/Composer学习日志1/" rel="prev" title="Composer学习日志1">
-                Composer学习日志1 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/04/Composer/Composer学习日志1/" rel="prev" title="Composer学习日志1-基本使用">
+                Composer学习日志1-基本使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -633,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -660,7 +666,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -709,7 +717,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -824,7 +836,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
